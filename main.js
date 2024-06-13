@@ -7,12 +7,18 @@ app.load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode");
 
 // Function to dynamically create scroll items
 function createScrollItems(count) {
+  const listDiv = document.getElementById('boothNameList');
+  const listItems = listDiv.querySelectorAll('[role="listitem"]');
+  const itemsArray = [];
+  listItems.forEach(item => {
+      itemsArray.push(item.textContent.trim());
+  });
   const scrollContent = document.querySelector(".scroll-content");
 
   for (let i = 1; i <= count; i++) {
     const item = document.createElement("div");
     item.className = "scroll-item";
-    item.textContent = `Item ${i}`;
+    item.textContent = itemsArray[i-1];
     item.addEventListener("click", () => {
       handleScrollItemClick(i);
     });

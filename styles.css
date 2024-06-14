@@ -30,6 +30,7 @@ html {
   padding: 10px;
   border-radius: 10px;
   scrollbar-width: none; /* Firefox */
+  padding-right: 20px;
 }
 
 .scroll-container::-webkit-scrollbar {

@@ -7,7 +7,10 @@ app.load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode");
 
 // Function to dynamically create scroll items
 function createScrollItems(count) {
-  const listDiv = document.getElementById('boothNameList');
+  // Access the global configuration variables
+  const listDivId = window.myGlobalConfig.listDivId;
+  // Step 1: Select the parent div using the global variable
+  const listDiv = document.getElementById(listDivId);
   const listItems = listDiv.querySelectorAll('[role="listitem"]');
   const itemsArray = [];
   listItems.forEach(item => {

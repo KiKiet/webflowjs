@@ -38,7 +38,6 @@ html {
 
 .scroll-content {
   display: flex;
-  padding-right: 1000px; /* Add space at the end of the scroll content */
 }
 
 .scroll-item {

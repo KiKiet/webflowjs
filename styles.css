@@ -38,6 +38,7 @@ html {
 
 .scroll-content {
   display: flex;
+  padding-right: 50px;
 }
 
 .scroll-item {

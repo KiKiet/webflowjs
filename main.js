@@ -18,7 +18,7 @@ function createScrollItems(count) {
   });
   const scrollContent = document.querySelector(".scroll-content");
 
-  for (let i = 1; i <= count; i++) {
+  for (let i = 1; i <= itemsArray.length; i++) {
     const item = document.createElement("div");
     item.className = "scroll-item";
     item.textContent = itemsArray[i-1];

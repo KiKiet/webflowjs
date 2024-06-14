@@ -38,7 +38,6 @@ html {
 
 .scroll-content {
   display: flex;
-  padding-right: 50px;
 }
 
 .scroll-item {
@@ -50,6 +49,7 @@ html {
   text-align: center;
   cursor: pointer; /* Add cursor pointer to indicate clickability */
   flex-shrink: 0; /* Prevent items from shrinking */
+  padding-right: 50px;
 }
 
 .scroll-item:hover {

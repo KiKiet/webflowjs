@@ -49,11 +49,10 @@ html {
   text-align: center;
   cursor: pointer; /* Add cursor pointer to indicate clickability */
   flex-shrink: 0; /* Prevent items from shrinking */
-  padding-right: 50px;
 }
 
 .scroll-item:hover {
-  background: #bbb; /* Optional: change background color on hover */
+  background: #fff; /* Optional: change background color on hover */
 }
 
 /* Responsive styles */

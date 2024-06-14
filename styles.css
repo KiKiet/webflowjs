@@ -36,6 +36,10 @@ html {
   display: none; /* Safari and Chrome */
 }
 
+#scroll-container > div:last-child {
+    margin-right: 20px; /* Adjust as needed */
+}
+
 .scroll-content {
   display: flex;
 }

@@ -30,19 +30,15 @@ html {
   padding: 10px;
   border-radius: 10px;
   scrollbar-width: none; /* Firefox */
-  padding-right: 100px;
 }
 
 .scroll-container::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
 
-#scroll-container > div:last-child {
-    margin-right: 100px; /* Adjust as needed */
-}
-
 .scroll-content {
   display: flex;
+  padding-right: 50px; /* Add space at the end of the scroll content */
 }
 
 .scroll-item {

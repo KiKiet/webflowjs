@@ -53,7 +53,7 @@ html {
 }
 
 .scroll-item:hover {
-  background: #bbb; /* Optional: change background color on hover */
+  background: #f0000f; /* Optional: change background color on hover */
 }
 
 /* Responsive styles */

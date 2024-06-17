@@ -20,15 +20,16 @@ html {
 
 .scroll-container {
   position: absolute;
-  top: 20px; /* Move the scroll container to the top */
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: none;
   overflow-x: auto;
-  width: 60%; /* Reduce the width of the scroll container */
+  width: 60%;
   background: rgba(255, 255, 255, 0.8);
   padding: 10px;
   border-radius: 10px;
+  box-sizing: border-box;
   scrollbar-width: none; /* Firefox */
 }
 
@@ -38,12 +39,20 @@ html {
 
 .scroll-content {
   display: flex;
-  margin-right: 1px;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 0 2px; /* Ensure padding on both sides */
+  box-sizing: border-box; /* Include padding in width calculation */
+  position: relative; /* For positioning the pseudo-element */
+}
+
+.scroll-content::after {
+  content: "";
+  flex: 0 0 2px; /* Ensure 10px space at the end */
 }
 
 .scroll-item {
   min-width: 100px;
-  margin: 0 10px;
   background: #ccc;
   padding: 20px;
   border-radius: 5px;
@@ -53,7 +62,7 @@ html {
 }
 
 .scroll-item:hover {
-  background: #bbb; /* Optional: change background color on hover */
+  background: #ff0000; /* Optional: change background color on hover */
 }
 
 /* Responsive styles */
@@ -66,7 +75,6 @@ html {
   .scroll-item {
     min-width: 80px;
     padding: 15px;
-    margin: 0 5px;
   }
 }
 
@@ -79,6 +87,5 @@ html {
   .scroll-item {
     min-width: 70px;
     padding: 10px;
-    margin: 0 3px;
   }
 }

@@ -37,45 +37,38 @@ function handleScrollItemClick(index) {
   app.setVariable("ClickFromScrollbar", true);
   switch (index) {
     case 1:
-      if (currentBooth != 1){
+      if (app.getVariable("State") != 1){
         app.emitEvent("mouseUp", "Icon");
-        currentBooth = 1;
       }
       break;
     case 2:
-      if (currentBooth != 2){
+      if (app.getVariable("State") != 2){
         app.emitEvent("mouseUp", "IconFilm");
-        currentBooth = 2;
       }
       break;
     case 3:
-      if (currentBooth != 3){
+      if (app.getVariable("State") != 3){
         app.emitEvent("mouseUp", "IconGame");
-        currentBooth = 3;
       }
       break;
     case 4:
-      if (currentBooth != 4){
+      if (app.getVariable("State") != 4){
         app.emitEvent("mouseUp", "IconDMedia");
-        currentBooth = 4;
       }
       break;
     case 5:
-      if (currentBooth != 5){
+      if (app.getVariable("State") != 5){
         app.emitEvent("mouseUp", "IconAMH");
-        currentBooth = 5;
       }
       break;
     case 6:
-      if (currentBooth != 6){
+      if (app.getVariable("State") != 6){
         app.emitEvent("mouseUp", "IconAviation");
-        currentBooth = 6;
       }
       break;
     case 7:
-      if (currentBooth != 7){
+      if (app.getVariable("State") != 7){
         app.emitEvent("mouseUp", "IconEmotion");
-        currentBooth = 7;
       }
       break;
     default:
@@ -100,16 +93,24 @@ function hideScrollBar() {
   }
 }
 
-setInterval(() => {
-  if (app.getVariable("ViewState")) {
-    showScrollBar();
-  } else {
-    hideScrollBar();
-  }
-}, 100); // Check every 100 milliseconds
+// setInterval(() => {
+//   if (app.getVariable("ViewState")) {
+//     showScrollBar();
+//   } else {
+//     hideScrollBar();
+//   }
+// }, 100); // Check every 100 milliseconds
+
 // Add event listener to create scroll items when DOM content is loaded
 document.addEventListener("DOMContentLoaded", () => {
   if (!itemLoaded) {
     createScrollItems();
   }
+  setInterval(() => {
+    if (app.getVariable("ViewState")) {
+      showScrollBar();
+    } else {
+      hideScrollBar();
+    }
+  }, 100); // Check every 100 milliseconds
 });

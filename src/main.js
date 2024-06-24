@@ -16,7 +16,7 @@ function createScrollItems() {
   const itemsArray = [];
   listItems.forEach(item => {
     // const boothName = item.querySelector('.program');
-    itemsArray.push(boothName.textContent.trim());
+    itemsArray.push(item.textContent.trim());
   });
   const scrollContent = document.querySelector(".scroll-content");
 

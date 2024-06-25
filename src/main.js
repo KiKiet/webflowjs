@@ -11,7 +11,8 @@ function createScrollItems() {
   // Access the global configuration variables
   const listDivId = window.myGlobalConfig.listDivId;
   // Step 1: Select the parent div using the global variable
-  const listDiv = document.getElementById(listDivId);
+  // const listDiv = document.getElementById(listDivId);
+  const listDiv = document.getElementById("boothList");
   const listItems = listDiv.querySelectorAll('[role="listitem"]');
   const itemsArray = [];
   listItems.forEach(item => {

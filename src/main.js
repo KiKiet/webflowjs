@@ -33,7 +33,7 @@ function createScrollItems() {
 
 // Function to handle scroll item click
 function handleScrollItemClick(index) {
-  console.log(`Scroll item ${index + 1} clicked!`);
+  console.log(`Scroll item ${index} clicked!`);
   app.setVariable("ClickFromScrollbar", true);
   switch (index) {
     case 1:
@@ -96,7 +96,7 @@ function hideScrollBar() {
 function showInfo(index) {
   const listItems = listDiv.querySelectorAll('[role="listitem"]');
   listItems.forEach((item, idx) => {
-    item.style.display = idx === index ? 'block' : 'none';
+    item.style.display = idx === index-1 ? 'block' : 'none';
   });
 }
 

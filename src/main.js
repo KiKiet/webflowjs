@@ -8,11 +8,9 @@ app.load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode");
 
 // Function to dynamically create scroll items
 function createScrollItems() {
-  // Access the global configuration variables
-  const listDivId = window.myGlobalConfig.listDivId;
   // Step 1: Select the parent div using the global variable
   // const listDiv = document.getElementById(listDivId);
-  const listDiv = document.getElementById("boothList");
+  const listDiv = document.getElementById("list");
   const listItems = listDiv.querySelectorAll('[role="listitem"]');
   const itemsArray = [];
   listItems.forEach(item => {
@@ -95,13 +93,11 @@ function hideScrollBar() {
   }
 }
 
-// setInterval(() => {
-//   if (app.getVariable("ViewState")) {
-//     showScrollBar();
-//   } else {
-//     hideScrollBar();
-//   }
-// }, 100); // Check every 100 milliseconds
+function showInfo(items, index) {
+  items.forEach((item, idx) => {
+    item.style.display = idx === index ? 'block' : 'none';
+  });
+}
 
 // Add event listener to create scroll items when DOM content is loaded
 document.addEventListener("DOMContentLoaded", () => {

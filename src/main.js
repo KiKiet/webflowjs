@@ -3,14 +3,14 @@ import { Application } from "@splinetool/runtime";
 const canvas = document.getElementById("canvas3d");
 const app = new Application(canvas);
 let itemLoaded = false;
-let currentBooth = 0;
+const listDiv = document.getElementById("list");
 app.load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode");
 
 // Function to dynamically create scroll items
 function createScrollItems() {
   // Step 1: Select the parent div using the global variable
   // const listDiv = document.getElementById(listDivId);
-  const listDiv = document.getElementById("list");
+  // const listDiv = document.getElementById("list");
   const listItems = listDiv.querySelectorAll('[role="listitem"]');
   const itemsArray = [];
   listItems.forEach(item => {
@@ -93,8 +93,8 @@ function hideScrollBar() {
   }
 }
 
-function showInfo(items, index) {
-  items.forEach((item, idx) => {
+function showInfo(index) {
+  listDiv.forEach((item, idx) => {
     item.style.display = idx === index ? 'block' : 'none';
   });
 }
@@ -107,6 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(() => {
     if (app.getVariable("ViewState")) {
       showScrollBar();
+      showInfo(app.getVariable("State"));
     } else {
       hideScrollBar();
     }

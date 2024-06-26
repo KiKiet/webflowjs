@@ -100,6 +100,24 @@ function showInfo(index) {
   });
 }
 
+const nextButton = document.getElementById("nextButton");
+const previousButton = document.getElementById("previousButton");
+nextButton.addEventListener("click", () => {
+  handleNextClick();
+});
+
+previousButton.addEventListener("click", () => {
+  handlePreviousClick();
+});
+
+function handleNextClick(){
+  app.setVariable('IfNum(Right)', app.getVariable('IfNum(Right)')+1);
+}
+
+function handlePreviousClick(){
+  app.setVariable('IfNum(Left)', app.getVariable('IfNum(Left)')+1);
+}
+
 // Add event listener to create scroll items when DOM content is loaded
 document.addEventListener("DOMContentLoaded", () => {
   if (!itemLoaded) {

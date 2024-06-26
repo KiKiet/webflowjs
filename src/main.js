@@ -94,7 +94,8 @@ function hideScrollBar() {
 }
 
 function showInfo(index) {
-  listDiv.forEach((item, idx) => {
+  const listItems = listDiv.querySelectorAll('[role="listitem"]');
+  listItems.forEach((item, idx) => {
     item.style.display = idx === index ? 'block' : 'none';
   });
 }

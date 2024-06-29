@@ -94,6 +94,8 @@ function hideScrollBar() {
 }
 
 function showInfo(index) {
+  const infoTab = documet.getElementById("infoTab");
+  infoTab.style.display = 'flex';
   const listItems = listDiv.querySelectorAll('[role="listitem"]');
   listItems.forEach((item, idx) => {
     item.style.display = idx === index-1 ? 'block' : 'none';

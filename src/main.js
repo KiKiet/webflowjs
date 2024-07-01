@@ -3,6 +3,7 @@ import { Application } from "@splinetool/runtime";
 const canvas = document.getElementById("canvas3d");
 const app = new Application(canvas);
 let itemLoaded = false;
+let isShowed = false;
 const listDiv = document.getElementById("list");
 app.load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode");
 
@@ -93,15 +94,21 @@ function hideScrollBar() {
   }
 }
 
+const infoTab = document.getElementById("infoTab");
+const infoTabButton = document.getElementById("TabIcon");
+
 function showInfo(index) {
   const listItems = listDiv.querySelectorAll('[role="listitem"]');
-  const infoTab = document.getElementById("infoTab");
   infoTab.style.display = 'flex';
-  const infoTabButton = document.getElementById("TabIcon");
   listItems.forEach((item, idx) => {
     item.style.display = idx === index-1 ? 'block' : 'none';
   });
   infoTabButton.click();
+}
+
+function hideInfo(){
+  infoTabButton.click();
+  infoTab.style.display = 'none';
 }
 
 const nextButton = document.getElementById("nextButton");
@@ -129,10 +136,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   setInterval(() => {
     if (app.getVariable("ViewState")) {
-      showScrollBar();
-      showInfo(app.getVariable("State"));
+      if (isShowed == false) {
+        showScrollBar();
+        showInfo(app.getVariable("State"));
+        isShowed = true;
+      }
     } else {
       hideScrollBar();
+      hideInfo();
+      isShowed = false 
     }
   }, 100); // Check every 100 milliseconds
 });

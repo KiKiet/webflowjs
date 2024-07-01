@@ -94,12 +94,14 @@ function hideScrollBar() {
 }
 
 function showInfo(index) {
+  const listItems = listDiv.querySelectorAll('[role="listitem"]');
   const infoTab = document.getElementById("infoTab");
   infoTab.style.display = 'flex';
-  const listItems = listDiv.querySelectorAll('[role="listitem"]');
+  const infoTabButton = document.getElementById("TabIcon");
   listItems.forEach((item, idx) => {
     item.style.display = idx === index-1 ? 'block' : 'none';
   });
+  infoTabButton.click();
 }
 
 const nextButton = document.getElementById("nextButton");

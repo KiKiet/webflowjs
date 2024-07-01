@@ -81,7 +81,7 @@ function handleScrollItemClick(index) {
 
 // Function to show the scroll bar
 function showScrollBar() {
-  const scrollContainer = document.getElementById("scroll-container");
+  const scrollContainer = document.getElementById("scroll-container-wrapper");
   if (scrollContainer) {
     scrollContainer.style.display = "flex";
   }
@@ -89,7 +89,7 @@ function showScrollBar() {
 
 // Function to hide the scroll bar
 function hideScrollBar() {
-  const scrollContainer = document.getElementById("scroll-container");
+  const scrollContainer = document.getElementById("scroll-container-wrapper");
   if (scrollContainer) {
     scrollContainer.style.display = "none";
   }
@@ -165,7 +165,6 @@ document.addEventListener("DOMContentLoaded", () => {
           showScrollBar();
           isShowed = true;
         }
-
       } 
       // else {
       //   hideScrollBar();

@@ -117,10 +117,12 @@ function hideInfo(){
 const nextButton = document.getElementById("nextButton");
 const previousButton = document.getElementById("previousButton");
 nextButton.addEventListener("click", () => {
+  nextButton.click();
   handleNextClick();
 });
 
 previousButton.addEventListener("click", () => {
+  previousButton.click();
   handlePreviousClick();
 });
 

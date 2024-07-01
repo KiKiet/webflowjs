@@ -110,7 +110,6 @@ async function showInfo(index) {
   });
   if (isShowed == false){
     infoTab.style.display = 'flex';
-    await delay(3000);
     infoTabButton.click();
   }
 }

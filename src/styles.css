@@ -23,18 +23,20 @@ html {
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
+  width: 70%; /* Increase width */
 }
 
 .scroll-container {
   overflow-x: auto;
-  width: 60%;
+  width: 100%; /* Ensure it takes the full width of the wrapper */
   background: rgba(255, 255, 255, 0.8);
   padding: 10px;
   border-radius: 10px;
   scrollbar-width: none; /* Firefox */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .scroll-container::-webkit-scrollbar {
@@ -52,7 +54,7 @@ html {
 
 .scroll-content::after {
   content: "";
-  flex: 0 0 2px; /* Ensure 10px space at the end */
+  flex: 0 0 2px; /* Ensure 2px space at the end */
 }
 
 .scroll-item {
@@ -73,7 +75,7 @@ html {
   background-color: #f00;
   color: #fff;
   border: none;
-  padding: 10px 10px;
+  padding: 5px 10px; /* Make the button smaller */
   border-radius: 5px;
   cursor: pointer;
   margin-right: 10px; /* Adjust spacing between close button and scroll container */
@@ -86,7 +88,7 @@ html {
 /* Responsive styles */
 @media (max-width: 768px) {
   .scroll-container-wrapper {
-    width: 70%; /* Adjust width for smaller screens */
+    width: 80%; /* Adjust width for smaller screens */
     top: 10px;
   }
 
@@ -102,7 +104,7 @@ html {
 
 @media (max-width: 480px) {
   .scroll-container-wrapper {
-    width: 80%; /* Adjust width for even smaller screens */
+    width: 90%; /* Adjust width for even smaller screens */
     top: 5px;
   }
 

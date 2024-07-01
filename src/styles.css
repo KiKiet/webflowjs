@@ -65,9 +65,23 @@ html {
   background: #ff0000; /* Optional: change background color on hover */
 }
 
+.close-button {
+  background-color: #f00;
+  color: #fff;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px; /* Adjust spacing between close button and scroll container */
+}
+
+.close-button:hover {
+  background-color: #c00;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
-  .scroll-container {
+  .scroll-container-wrapper {
     width: 70%; /* Adjust width for smaller screens */
     top: 10px;
   }
@@ -76,10 +90,14 @@ html {
     min-width: 80px;
     padding: 15px;
   }
+
+  .close-button {
+    left: calc(50% - 250px); /* Adjust position for smaller screens */
+  }
 }
 
 @media (max-width: 480px) {
-  .scroll-container {
+  .scroll-container-wrapper {
     width: 80%; /* Adjust width for even smaller screens */
     top: 5px;
   }
@@ -87,5 +105,9 @@ html {
   .scroll-item {
     min-width: 70px;
     padding: 10px;
+  }
+
+  .close-button {
+    left: calc(50% - 190px); /* Adjust position for smaller screens */
   }
 }

@@ -124,12 +124,17 @@ async function hideInfo(){
 
 const nextButton = document.getElementById("nextButton");
 const previousButton = document.getElementById("previousButton");
+const closeButton = document.getElementById("close-button");
 nextButton.addEventListener("click", () => {
   handleNextClick();
 });
 
 previousButton.addEventListener("click", () => {
   handlePreviousClick();
+});
+
+closeButton.addEventListener("click", () => {
+  handleCloseClick();
 });
 
 function handleNextClick(){
@@ -140,23 +145,33 @@ function handlePreviousClick(){
   app.setVariable('IfNum(Left)', app.getVariable('IfNum(Left)')+1);
 }
 
+function handleCloseClick(){
+  app.setVariable('IfNum(Close)', app.getVariable('IfNum(Close)')+1);
+  hideScrollBar();
+  hideInfo();
+  isShowed = false
+}
+
 // Add event listener to create scroll items when DOM content is loaded
 document.addEventListener("DOMContentLoaded", () => {
   if (!itemLoaded) {
     createScrollItems();
   }
-  setInterval(() => {
-    if (app.getVariable("ViewState")) {
-      showInfo(app.getVariable("State"));
-      if (isShowed == false) {
-        showScrollBar();
-        isShowed = true;
-      }
-      
-    } else {
-      hideScrollBar();
-      hideInfo();
-      isShowed = false 
-    }
-  }, 100); // Check every 100 milliseconds
+  if (app == null){
+    setInterval(() => {
+      if (app.getVariable("ViewState")) {
+        showInfo(app.getVariable("State"));
+        if (isShowed == false) {
+          showScrollBar();
+          isShowed = true;
+        }
+
+      } 
+      // else {
+      //   hideScrollBar();
+      //   hideInfo();
+      //   isShowed = false
+      // }
+    }, 100); // Check every 100 milliseconds
+  }
 });

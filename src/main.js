@@ -136,15 +136,15 @@ closeButton.addEventListener("click", () => {
 });
 
 function handleNextClick(){
-  app.setVariable('IfNum(Right)', app.getVariable('IfNum(Right)')+1);
+  app.emitEvent("mouseDown", "IfNum(Right)");
 }
 
 function handlePreviousClick(){
-  app.setVariable('IfNum(Left)', app.getVariable('IfNum(Left)')+1);
+  app.emitEvent("mouseDown", "IfNum(Left)");
 }
 
 function handleCloseClick(){
-  app.setVariable('IfNum(Close)', app.getVariable('IfNum(Close)')+1);
+  app.emitEvent("mouseDown", "IfNum(Close)");
   hideScrollBar();
   hideInfo();
   isShowed = false

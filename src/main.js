@@ -98,14 +98,20 @@ function hideScrollBar() {
 const infoTab = document.getElementById("infoTab");
 const infoTabButton = document.getElementById("TabIcon");
 const listItems = listDiv.querySelectorAll('[role="listitem"]');
+function delay(milliseconds){
+  return new Promise(resolve => {
+      setTimeout(resolve, milliseconds);
+  });
+}
 
-function showInfo(index) {
+async function showInfo(index) {
   infoTab.style.display = 'flex';
   listItems.forEach((item, idx) => {
     item.style.display = idx === index-1 ? 'block' : 'none';
   });
   if (isShowed == false){
     infoTab.style.display = 'flex';
+    await delay(3000);
     infoTabButton.click();
   }
 }
@@ -118,7 +124,7 @@ function delay(milliseconds){
 
 async function hideInfo(){
   infoTabButton.click();
-  await delay(1500);
+  await delay(3000);
   infoTab.style.display = 'none';
 }
 

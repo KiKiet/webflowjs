@@ -110,15 +110,8 @@ function showInfo(index) {
   }
 }
 
-function delay(milliseconds){
-  return new Promise(resolve => {
-      setTimeout(resolve, milliseconds);
-  });
-}
-
-async function hideInfo(){
+function hideInfo(){
   infoTabButton.click();
-  await delay(2000);
   infoTab.style.display = 'none';
 }
 

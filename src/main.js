@@ -35,6 +35,7 @@ function createScrollItems() {
 // Function to handle scroll item click
 function handleScrollItemClick(index) {
   console.log(`Scroll item ${index} clicked!`);
+  previousButton.click();
   app.setVariable("ClickFromScrollbar", true);
   switch (index) {
     case 1:
@@ -117,12 +118,10 @@ function hideInfo(){
 const nextButton = document.getElementById("nextButton");
 const previousButton = document.getElementById("previousButton");
 nextButton.addEventListener("click", () => {
-  nextButton.click();
   handleNextClick();
 });
 
 previousButton.addEventListener("click", () => {
-  previousButton.click();
   handlePreviousClick();
 });
 

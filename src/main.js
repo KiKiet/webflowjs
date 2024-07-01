@@ -118,7 +118,7 @@ function delay(milliseconds){
 
 async function hideInfo(){
   infoTabButton.click();
-  await delay(1000);
+  await delay(1500);
   infoTab.style.display = 'none';
 }
 

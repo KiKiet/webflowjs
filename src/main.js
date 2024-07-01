@@ -105,7 +105,6 @@ function delay(milliseconds){
 }
 
 async function showInfo(index) {
-  infoTab.style.display = 'flex';
   listItems.forEach((item, idx) => {
     item.style.display = idx === index-1 ? 'block' : 'none';
   });
@@ -157,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!itemLoaded) {
     createScrollItems();
   }
-  if (app == null){
+  if (app != null){
     setInterval(() => {
       if (app.getVariable("ViewState")) {
         showInfo(app.getVariable("State"));

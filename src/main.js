@@ -96,9 +96,9 @@ function hideScrollBar() {
 
 const infoTab = document.getElementById("infoTab");
 const infoTabButton = document.getElementById("TabIcon");
+const listItems = listDiv.querySelectorAll('[role="listitem"]');
 
 function showInfo(index) {
-  const listItems = listDiv.querySelectorAll('[role="listitem"]');
   infoTab.style.display = 'flex';
   listItems.forEach((item, idx) => {
     item.style.display = idx === index-1 ? 'block' : 'none';
@@ -123,10 +123,16 @@ previousButton.addEventListener("click", () => {
 
 function handleNextClick(){
   app.setVariable('IfNum(Right)', app.getVariable('IfNum(Right)')+1);
+  listItems.forEach((item, idx) => {
+    item.style.display = idx === app.getVariable("State")-1 ? 'block' : 'none';
+  });
 }
 
 function handlePreviousClick(){
   app.setVariable('IfNum(Left)', app.getVariable('IfNum(Left)')+1);
+  listItems.forEach((item, idx) => {
+    item.style.display = idx === app.getVariable("State")-1 ? 'block' : 'none';
+  });
 }
 
 // Add event listener to create scroll items when DOM content is loaded

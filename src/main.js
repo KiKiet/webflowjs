@@ -124,14 +124,14 @@ previousButton.addEventListener("click", () => {
 function handleNextClick(){
   app.setVariable('IfNum(Right)', app.getVariable('IfNum(Right)')+1);
   listItems.forEach((item, idx) => {
-    item.style.display = idx === app.getVariable("State")-1 ? 'block' : 'none';
+    item.style.display = idx === app.getVariable("State") ? 'block' : 'none';
   });
 }
 
 function handlePreviousClick(){
   app.setVariable('IfNum(Left)', app.getVariable('IfNum(Left)')+1);
   listItems.forEach((item, idx) => {
-    item.style.display = idx === app.getVariable("State")-1 ? 'block' : 'none';
+    item.style.display = idx === app.getVariable("State")-2 ? 'block' : 'none';
   });
 }
 

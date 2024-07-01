@@ -136,15 +136,15 @@ closeButton.addEventListener("click", () => {
 });
 
 function handleNextClick(){
-  app.emitEvent("mouseDown", "IfNum(Right)");
+  app.emitEvent("mouseDown", "RightButton");
 }
 
 function handlePreviousClick(){
-  app.emitEvent("mouseDown", "IfNum(Left)");
+  app.emitEvent("mouseDown", "LeftButton");
 }
 
 function handleCloseClick(){
-  app.emitEvent("mouseDown", "IfNum(Close)");
+  app.emitEvent("mouseDown", "CloseButton");
   hideScrollBar();
   hideInfo();
   isShowed = false

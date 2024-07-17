@@ -85,6 +85,11 @@ function showScrollBar() {
   if (scrollContainer) {
     scrollContainer.style.display = "flex";
   }
+  // Enable pointer events for canvas2d to block interactions with canvas3d
+  const canvas2d = document.getElementById("canvas2d");
+  if (canvas2d) {
+    canvas2d.style.pointerEvents = "auto";
+  }
 }
 
 // Function to hide the scroll bar
@@ -92,6 +97,11 @@ function hideScrollBar() {
   const scrollContainer = document.getElementById("scroll-container-wrapper");
   if (scrollContainer) {
     scrollContainer.style.display = "none";
+  }
+  // Disable pointer events for canvas2d
+  const canvas2d = document.getElementById("canvas2d");
+  if (canvas2d) {
+    canvas2d.style.pointerEvents = "none";
   }
 }
 

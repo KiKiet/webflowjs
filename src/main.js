@@ -184,15 +184,23 @@ async function showInfo(index) {
 }
 
 async function hideInfo(){
-  infoTabButton.click();
+  if (infoShowed){
+    infoTabButton.click();
+  }
   await delay(800);
   infoTab.style.display = 'none';
   infoShowed = false;
 }
 
+const tabIcon = document.getElementById("TabIcon");
 const nextButton = document.getElementById("nextButton");
 const previousButton = document.getElementById("previousButton");
 const closeButton = document.getElementById("close-button");
+
+tabIcon.addEventListener("click", () => {
+  handleTabIconClick();
+});
+
 nextButton.addEventListener("click", () => {
   enableScrollItemByIndex(app.getVariable("State"));
   disableScrollItemByIndex(app.getVariable("State") + 1);
@@ -209,6 +217,10 @@ closeButton.addEventListener("click", () => {
   handleCloseClick();
 });
 
+function handleTabIconClick(){
+  infoShowed = !infoShowed;
+}
+
 function handleNextClick(){
   app.emitEvent("mouseDown", "RightButton");
 }
@@ -220,9 +232,7 @@ function handlePreviousClick(){
 function handleCloseClick(){
   app.emitEvent("mouseDown", "CloseButton");
   hideCloseButton();
-  if (infoShowed){
-    hideInfo();
-  }
+  hideInfo();
   isShowed = false;
 }
 

@@ -62,7 +62,9 @@ function handleScrollItemClick(index) {
 
   enableAllScrollItems();
   disableScrollItemByIndex(index);
-  switchTabTrigger.click();
+  if (isShowed){
+    switchTabTrigger.click();
+  }
   switch (index) {
     case 1:
       if (app.getVariable("State") != 1){

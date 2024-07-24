@@ -222,10 +222,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (app != null) {
     setInterval(() => {
       if (app.getVariable("ViewState")) {
+        showInfo(app.getVariable("State"));
         if (isShowed == false) {
           showCloseButton();
           disableScrollItemByIndex(app.getVariable("State"));
-          showInfo(app.getVariable("State"));
+          
           isShowed = true;
         }
       }

@@ -41,6 +41,7 @@ html {
   justify-content: center;
   width: 70%; /* Increase width */
   z-index: 3; /* Ensure it's above the canvas */
+  animation: scrollBar-easeInFromTop 0.5s ease-out;
 }
 
 .scroll-container {
@@ -54,7 +55,7 @@ html {
 }
 
 .scroll-container::-webkit-scrollbar {
-  display: flex; /* Safari and Chrome */
+  display: none; /* Safari and Chrome */
 }
 
 .scroll-content {
@@ -94,11 +95,82 @@ html {
   cursor: pointer;
   margin-right: 10px; /* Adjust spacing between close button and scroll container */
   z-index: 3; /* Ensure it's above the scroll container */
+  animation: button-easeInFromTop 0.5s ease-out;
+  animation: button-easeOutToTop 0.5s ease-out;
   display: none;
 }
 
 .close-button:hover {
   background-color: #c00;
+}
+
+/* Keyframes for ease-in from top animation */
+@keyframes scrollBar-easeInFromTop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -20px); /* Move from above */
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0); /* Move from above */
+  }
+}
+
+@keyframes scrollBar-easeOutToTop {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0); /* Original position */
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50px); /* Move above */
+  }
+}
+
+/* Keyframes for shortening scroll bar from the left */
+@keyframes shortenScrollBar {
+  0% {
+    transform: translateX(0);
+    width: 100%;
+  }
+  100% {
+    transform: translateX(22px); /* Adjust based on how much you want to move */
+    width: calc(100% - 43px);
+  }
+}
+
+@keyframes lengthenScrollBar {
+  0% {
+    transform: translateX(22px); /* Adjust based on how much you want to move */
+    width: calc(100% - 43px);
+  }
+  100% {
+    transform: translateX(0);
+    width: 100%;
+  }
+}
+
+/* Keyframes for ease-in from top animation */
+@keyframes button-easeInFromTop {
+  0% {
+    opacity: 0;
+    transform: translate(0, -20px); /* Move from above */
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0); /* Move from above */
+  }
+}
+
+@keyframes button-easeOutToTop {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0); /* Original position */
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, -50px); /* Move above */
+  }
 }
 
 /* Responsive styles */

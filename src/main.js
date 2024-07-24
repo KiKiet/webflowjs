@@ -85,6 +85,7 @@ function showScrollBar() {
   const scrollContainer = document.getElementById("scroll-container-wrapper");
   if (scrollContainer) {
     scrollContainer.style.display = "flex";
+    scrollContainer.style.animation = "scrollBar-easeInFromTop 0.5s ease-out";
   }
   // Enable pointer events for canvas2d to block interactions with canvas3d
   const canvas2d = document.getElementById("canvas2d");
@@ -106,9 +107,14 @@ function hideScrollBar() {
   }
 }
 
-function showCloseButton() {
+async function showCloseButton() {
   const closeButton = document.getElementById("close-button");
+  const scrollContainer = document.getElementById("scroll-container");
+  scrollContainer.style.width = "calc(100% - 43px)";
+  scrollContainer.style.animation = "shortenScrollBar 0.5s ease-out"; // Apply shorten animation
+  await delay(500);
   closeButton.style.display = "flex";
+  closeButton.style.animation = "button-easeInFromTop 0.5s ease-out"; // Apply animation
 
   // Enable pointer events for canvas2d to block interactions with canvas3d
   const canvas2d = document.getElementById("canvas2d");
@@ -117,11 +123,17 @@ function showCloseButton() {
   }
 }
 
-function hideCloseButton() {
+async function hideCloseButton() {
   const closeButton = document.getElementById("close-button");
+  const scrollContainer = document.getElementById("scroll-container");
+  closeButton.style.animation = "button-easeOutToTop 0.5s ease-out";
+  await delay(400);
   closeButton.style.display = "none";
-  
-  // Enable pointer events for canvas2d to block interactions with canvas3d
+
+  scrollContainer.style.width = "100%"; // Reset width when close button is hidden
+  scrollContainer.style.animation = "lengthenScrollBar 1s ease-out"; // Apply lengthen animation
+
+  // Disable pointer events for canvas2d
   const canvas2d = document.getElementById("canvas2d");
   if (canvas2d) {
     canvas2d.style.pointerEvents = "none";

@@ -177,7 +177,7 @@ async function showInfo(index) {
   });
   if (isShowed == false){
     infoTab.style.display = 'flex';
-    await delay(500);
+    await delay(1000);
     infoTabButton.click();
     infoShowed = true;
   }
@@ -195,11 +195,13 @@ const previousButton = document.getElementById("previousButton");
 const closeButton = document.getElementById("close-button");
 nextButton.addEventListener("click", () => {
   enableScrollItemByIndex(app.getVariable("State"));
+  disableScrollItemByIndex(app.getVariable("State") + 1);
   handleNextClick();
 });
 
 previousButton.addEventListener("click", () => {
   enableScrollItemByIndex(app.getVariable("State"));
+  disableScrollItemByIndex(app.getVariable("State") - 1);
   handlePreviousClick();
 });
 

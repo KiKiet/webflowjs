@@ -86,6 +86,11 @@ html {
   background: #bbb; /* Optional: change background color on hover */
 }
 
+.scroll-item.disabled {
+  background: #999; /* Change background to indicate disabled state */
+  cursor: not-allowed; /* Change cursor to indicate the item is disabled */
+}
+
 .close-button {
   background-color: #f00;
   color: #fff;

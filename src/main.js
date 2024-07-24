@@ -2,9 +2,10 @@ import { Application } from "@splinetool/runtime";
 
 const canvas = document.getElementById("canvas3d");
 const app = new Application(canvas);
-let itemLoaded = false;
-let isShowed = false;
-let infoShowed = false;
+let itemLoaded = false; // Check if scroll items is loaded
+let isShowed = false; // Check if all ui is showed
+let infoShowed = false; // Check if info tab iss showed
+let currentlySelectedItem = null; // Track the currently selected item
 const listDiv = document.getElementById("list");
 app.load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode");
 
@@ -26,18 +27,33 @@ function createScrollItems() {
     item.className = "scroll-item";
     item.textContent = itemsArray[i-1];
     item.addEventListener("click", () => {
-      handleScrollItemClick(i);
+      handleScrollItemClick(i, item);
     });
     scrollContent.appendChild(item);
   }
   itemLoaded = true;
 }
 
+// Function to enable all scroll items
+function enableAllScrollItems() {
+  const scrollItems = document.querySelectorAll(".scroll-item");
+  scrollItems.forEach((item) => {
+    item.classList.remove("disabled");
+  });
+}
+
 // Function to handle scroll item click
-function handleScrollItemClick(index) {
+function handleScrollItemClick(index, clickedItem) {
   console.log(`Scroll item ${index} clicked!`);
-  previousButton.click();
+  // previousButton.click();
   app.setVariable("ClickFromScrollbar", true);
+
+  // Disable the clicked item
+  if (currentlySelectedItem && currentlySelectedItem !== clickedItem) {
+    currentlySelectedItem.classList.remove('disabled');
+  }
+  clickedItem.classList.add('disabled');
+  currentlySelectedItem = clickedItem;
   switch (index) {
     case 1:
       if (app.getVariable("State") != 1){
@@ -119,6 +135,7 @@ async function showCloseButton() {
 }
 
 async function hideCloseButton() {
+  enableAllScrollItems();
   const closeButton = document.getElementById("close-button");
   const scrollContainer = document.getElementById("scroll-container");
   closeButton.style.animation = "button-easeOutToTop 0.5s ease-out";
@@ -205,6 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (app.getVariable("ViewState")) {
         if (isShowed == false) {
           showCloseButton();
+          showInfo();
           isShowed = true;
         }
       }

@@ -27,11 +27,16 @@ function createScrollItems() {
     item.className = "scroll-item";
     item.textContent = itemsArray[i-1];
     item.addEventListener("click", () => {
-      handleScrollItemClick(i, item);
+      handleScrollItemClick(i);
     });
     scrollContent.appendChild(item);
   }
   itemLoaded = true;
+}
+// Function to disable a scroll item by its index
+function disableScrollItemByIndex(index) {
+  const scrollItems = document.querySelectorAll(".scroll-item");
+  scrollItems[index - 1].classList.add("disabled");
 }
 
 // Function to enable all scroll items
@@ -43,17 +48,12 @@ function enableAllScrollItems() {
 }
 
 // Function to handle scroll item click
-function handleScrollItemClick(index, clickedItem) {
+function handleScrollItemClick(index) {
   console.log(`Scroll item ${index} clicked!`);
   // previousButton.click();
   app.setVariable("ClickFromScrollbar", true);
 
-  // Disable the clicked item
-  if (currentlySelectedItem && currentlySelectedItem !== clickedItem) {
-    currentlySelectedItem.classList.remove('disabled');
-  }
-  clickedItem.classList.add('disabled');
-  currentlySelectedItem = clickedItem;
+  disableScrollItemByIndex(index);
   switch (index) {
     case 1:
       if (app.getVariable("State") != 1){
@@ -135,7 +135,6 @@ async function showCloseButton() {
 }
 
 async function hideCloseButton() {
-  enableAllScrollItems();
   const closeButton = document.getElementById("close-button");
   const scrollContainer = document.getElementById("scroll-container");
   closeButton.style.animation = "button-easeOutToTop 0.5s ease-out";
@@ -150,6 +149,9 @@ async function hideCloseButton() {
   if (canvas2d) {
     canvas2d.style.pointerEvents = "none";
   }
+
+  // Enable all scroll items when the close button is hidden
+  enableAllScrollItems();
 }
 
 const infoTab = document.getElementById("infoTab");
@@ -222,7 +224,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (app.getVariable("ViewState")) {
         if (isShowed == false) {
           showCloseButton();
-          showInfo();
+          disableScrollItemByIndex(app.getVariable("State"));
+          showInfo(app.getVariable("State"));
           isShowed = true;
         }
       }

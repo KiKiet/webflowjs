@@ -57,7 +57,6 @@ function enableAllScrollItems() {
 // Function to handle scroll item click
 function handleScrollItemClick(index) {
   console.log(`Scroll item ${index} clicked!`);
-  // previousButton.click();
   app.setVariable("ClickFromScrollbar", true);
 
   enableAllScrollItems();
@@ -180,7 +179,7 @@ async function showInfo(index) {
   });
   if (isShowed == false){
     infoTab.style.display = 'flex';
-    await delay(1000);
+    await delay(500);
     infoTabButton.click();
     infoShowed = true;
   }

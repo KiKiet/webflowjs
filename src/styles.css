@@ -89,6 +89,7 @@ html {
 .scroll-item.disabled {
   background: #999; /* Change background to indicate disabled state */
   cursor: not-allowed; /* Change cursor to indicate the item is disabled */
+  pointer-events: none;
 }
 
 .close-button {

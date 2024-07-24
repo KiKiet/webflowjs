@@ -7,7 +7,14 @@ let isShowed = false; // Check if all ui is showed
 let infoShowed = false; // Check if info tab iss showed
 let currentlySelectedItem = null; // Track the currently selected item
 const listDiv = document.getElementById("list");
-app.load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode");
+app.load(
+	'https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode',
+	undefined,
+	{
+		credentials: 'include',
+		mode: 'no-cors',
+	}
+);
 
 // Function to dynamically create scroll items
 function createScrollItems() {

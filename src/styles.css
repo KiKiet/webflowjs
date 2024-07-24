@@ -54,7 +54,7 @@ html {
 }
 
 .scroll-container::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
+  display: flex; /* Safari and Chrome */
 }
 
 .scroll-content {
@@ -94,6 +94,7 @@ html {
   cursor: pointer;
   margin-right: 10px; /* Adjust spacing between close button and scroll container */
   z-index: 3; /* Ensure it's above the scroll container */
+  display: none;
 }
 
 .close-button:hover {

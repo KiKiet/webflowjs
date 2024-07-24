@@ -4,6 +4,7 @@ const canvas = document.getElementById("canvas3d");
 const app = new Application(canvas);
 let itemLoaded = false;
 let isShowed = false;
+let infoShowed = false;
 const listDiv = document.getElementById("list");
 app.load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode");
 
@@ -105,6 +106,28 @@ function hideScrollBar() {
   }
 }
 
+function showCloseButton() {
+  const closeButton = document.getElementById("close-button");
+  closeButton.style.display = "flex";
+
+  // Enable pointer events for canvas2d to block interactions with canvas3d
+  const canvas2d = document.getElementById("canvas2d");
+  if (canvas2d) {
+    canvas2d.style.pointerEvents = "auto";
+  }
+}
+
+function hideCloseButton() {
+  const closeButton = document.getElementById("close-button");
+  closeButton.style.display = "none";
+  
+  // Enable pointer events for canvas2d to block interactions with canvas3d
+  const canvas2d = document.getElementById("canvas2d");
+  if (canvas2d) {
+    canvas2d.style.pointerEvents = "none";
+  }
+}
+
 const infoTab = document.getElementById("infoTab");
 const infoTabButton = document.getElementById("TabIcon");
 const listItems = listDiv.querySelectorAll('[role="listitem"]');
@@ -121,6 +144,7 @@ async function showInfo(index) {
   if (isShowed == false){
     infoTab.style.display = 'flex';
     infoTabButton.click();
+    infoShowed = true;
   }
 }
 
@@ -128,6 +152,7 @@ async function hideInfo(){
   infoTabButton.click();
   await delay(3000);
   infoTab.style.display = 'none';
+  infoShowed = false;
 }
 
 const nextButton = document.getElementById("nextButton");
@@ -155,9 +180,11 @@ function handlePreviousClick(){
 
 function handleCloseClick(){
   app.emitEvent("mouseDown", "CloseButton");
-  hideScrollBar();
-  hideInfo();
-  isShowed = false
+  hideCloseButton();
+  if (infoShowed){
+    hideInfo();
+  }
+  isShowed = false;
 }
 
 // Add event listener to create scroll items when DOM content is loaded
@@ -170,15 +197,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (app.getVariable("ViewState")) {
         showInfo(app.getVariable("State"));
         if (isShowed == false) {
-          showScrollBar();
+          showCloseButton();
           isShowed = true;
         }
       } 
-      // else {
-      //   hideScrollBar();
-      //   hideInfo();
-      //   isShowed = false
-      // }
     }, 100); // Check every 100 milliseconds
   }
 });

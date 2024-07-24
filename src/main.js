@@ -176,7 +176,7 @@ async function showInfo(index) {
 
 async function hideInfo(){
   infoTabButton.click();
-  await delay(3000);
+  await delay(500);
   infoTab.style.display = 'none';
   infoShowed = false;
 }

@@ -196,6 +196,7 @@ const tabIcon = document.getElementById("TabIcon");
 const nextButton = document.getElementById("nextButton");
 const previousButton = document.getElementById("previousButton");
 const closeButton = document.getElementById("close-button");
+const switchTabTrigger = document.getElementById("switchTabAnimTrigger");
 
 tabIcon.addEventListener("click", () => {
   handleTabIconClick();
@@ -217,6 +218,10 @@ closeButton.addEventListener("click", () => {
   handleCloseClick();
 });
 
+switchTabTrigger.addEventListener("click", () => {
+  handleSwitchTabClick();
+});
+
 function handleTabIconClick(){
   infoShowed = !infoShowed;
 }
@@ -234,6 +239,10 @@ function handleCloseClick(){
   hideCloseButton();
   hideInfo();
   isShowed = false;
+}
+
+function handleSwitchTabClick(){
+  switchTabTrigger.click();
 }
 
 // Add event listener to create scroll items when DOM content is loaded

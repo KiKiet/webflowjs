@@ -33,6 +33,7 @@ function createScrollItems() {
   }
   itemLoaded = true;
 }
+
 // Function to disable a scroll item by its index
 function disableScrollItemByIndex(index) {
   const scrollItems = document.querySelectorAll(".scroll-item");
@@ -59,6 +60,7 @@ function handleScrollItemClick(index) {
   // previousButton.click();
   app.setVariable("ClickFromScrollbar", true);
 
+  enableAllScrollItems();
   disableScrollItemByIndex(index);
   switch (index) {
     case 1:
@@ -192,10 +194,12 @@ const nextButton = document.getElementById("nextButton");
 const previousButton = document.getElementById("previousButton");
 const closeButton = document.getElementById("close-button");
 nextButton.addEventListener("click", () => {
+  enableScrollItemByIndex(app.getVariable("State"));
   handleNextClick();
 });
 
 previousButton.addEventListener("click", () => {
+  enableScrollItemByIndex(app.getVariable("State"));
   handlePreviousClick();
 });
 
@@ -204,12 +208,10 @@ closeButton.addEventListener("click", () => {
 });
 
 function handleNextClick(){
-  enableScrollItemByIndex(app.getVariable("State"));
   app.emitEvent("mouseDown", "RightButton");
 }
 
 function handlePreviousClick(){
-  enableScrollItemByIndex(app.getVariable("State"));
   app.emitEvent("mouseDown", "LeftButton");
 }
 
@@ -232,9 +234,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(() => {
       if (app.getVariable("ViewState")) {
         showInfo(app.getVariable("State"));
-        disableScrollItemByIndex(app.getVariable("State"));
         if (isShowed == false) {
           showCloseButton();
+          disableScrollItemByIndex(app.getVariable("State"));
           isShowed = true;
         }
       }

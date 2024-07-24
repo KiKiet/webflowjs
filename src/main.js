@@ -203,16 +203,16 @@ function handleCloseClick(){
 document.addEventListener("DOMContentLoaded", () => {
   if (!itemLoaded) {
     createScrollItems();
+    showScrollBar();
   }
-  if (app != null){
+  if (app != null) {
     setInterval(() => {
       if (app.getVariable("ViewState")) {
-        showInfo(app.getVariable("State"));
         if (isShowed == false) {
           showCloseButton();
           isShowed = true;
         }
-      } 
+      }
     }, 100); // Check every 100 milliseconds
   }
 });

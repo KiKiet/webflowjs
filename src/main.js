@@ -39,6 +39,12 @@ function disableScrollItemByIndex(index) {
   scrollItems[index - 1].classList.add("disabled");
 }
 
+// Function to disable a scroll item by its index
+function enableScrollItemByIndex(index) {
+  const scrollItems = document.querySelectorAll(".scroll-item");
+  scrollItems[index - 1].classList.remove("disabled");
+}
+
 // Function to enable all scroll items
 function enableAllScrollItems() {
   const scrollItems = document.querySelectorAll(".scroll-item");
@@ -169,6 +175,7 @@ async function showInfo(index) {
   });
   if (isShowed == false){
     infoTab.style.display = 'flex';
+    await delay(500);
     infoTabButton.click();
     infoShowed = true;
   }
@@ -197,10 +204,12 @@ closeButton.addEventListener("click", () => {
 });
 
 function handleNextClick(){
+  enableScrollItemByIndex(app.getVariable("State"));
   app.emitEvent("mouseDown", "RightButton");
 }
 
 function handlePreviousClick(){
+  enableScrollItemByIndex(app.getVariable("State"));
   app.emitEvent("mouseDown", "LeftButton");
 }
 
@@ -223,10 +232,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(() => {
       if (app.getVariable("ViewState")) {
         showInfo(app.getVariable("State"));
+        disableScrollItemByIndex(app.getVariable("State"));
         if (isShowed == false) {
           showCloseButton();
-          disableScrollItemByIndex(app.getVariable("State"));
-          
           isShowed = true;
         }
       }

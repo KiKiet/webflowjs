@@ -87,11 +87,6 @@ function showScrollBar() {
     scrollContainer.style.display = "flex";
     scrollContainer.style.animation = "scrollBar-easeInFromTop 0.5s ease-out";
   }
-  // Enable pointer events for canvas2d to block interactions with canvas3d
-  const canvas2d = document.getElementById("canvas2d");
-  if (canvas2d) {
-    canvas2d.style.pointerEvents = "auto";
-  }
 }
 
 // Function to hide the scroll bar

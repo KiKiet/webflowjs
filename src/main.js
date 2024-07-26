@@ -7,7 +7,7 @@ let isShowed = false; // Check if all ui is showed
 let infoShowed = false; // Check if info tab iss showed
 let currentlySelectedItem = null; // Track the currently selected item
 const listDiv = document.getElementById("list");
-app.load("src/scene.splinecode");
+app.load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode");
 
 // Function to dynamically create scroll items
 function createScrollItems() {
@@ -137,11 +137,8 @@ async function showCloseButton() {
   closeButton.style.display = "flex";
   closeButton.style.animation = "button-easeInFromTop 0.5s ease-out"; // Apply animation
 
-  // Enable pointer events for canvas2d to block interactions with canvas3d
-  const canvas2d = document.getElementById("canvas2d");
-  if (canvas2d) {
-    canvas2d.style.pointerEvents = "auto";
-  }
+  // Enable pointer events for canvas to block interactions with canvas
+    canvas.style.pointerEvents = "none";
 }
 
 async function hideCloseButton() {
@@ -154,11 +151,8 @@ async function hideCloseButton() {
   scrollContainer.style.width = "100%"; // Reset width when close button is hidden
   scrollContainer.style.animation = "lengthenScrollBar 1s ease-out"; // Apply lengthen animation
 
-  // Disable pointer events for canvas2d
-  const canvas2d = document.getElementById("canvas2d");
-  if (canvas2d) {
-    canvas2d.style.pointerEvents = "none";
-  }
+  // Disable pointer events for canvas
+  canvas.style.pointerEvents = "auto";
 
   // Enable all scroll items when the close button is hidden
   enableAllScrollItems();

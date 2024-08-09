@@ -204,7 +204,9 @@ async function hideInfo(){
 const closeButton = document.getElementById("close-button");
 const nextButton = document.getElementById("nextButton");
 const previousButton = document.getElementById("previousButton");
-const switchTabTrigger = document.getElementById("switchTabAnimTrigger");
+const switchTabTriggerForButtons = document.getElementById("switch-tab-anim-trigger-forbuttons");
+const switchTabTriggerForSwipeLeft = document.getElementById("switch-tab-anim-trigger-forswipeleft");
+const switchTabTriggerForSwipeRight = document.getElementById("switch-tab-anim-trigger-forswiperight");
 let startX = 0;
 let startY = 0;
 let distX = 0;
@@ -232,13 +234,11 @@ infoTab.addEventListener('touchend', (e) => {
       if (distX > 0) {
         // Trigger a custom slide right event or call a function
         console.log('Slide Right');
-        switchTabTrigger.click();
-        previousButton.click();
+        switchTabTriggerForSwipeRight.click();
       } else {
         // Trigger a custom slide left event or call a function
         console.log('Slide Left');
-        switchTabTrigger.click();
-        nextButton.click();
+        switchTabTriggerForSwipeLeft.click();
       }
     } 
   }
@@ -264,8 +264,20 @@ closeButton.addEventListener("click", () => {
   handleCloseClick();
 });
 
-switchTabTrigger.addEventListener("click", () => {
-  handleSwitchTabClick();
+switchTabTriggerForButtons.addEventListener("click", () => {
+  handleSwitchTabForButtonsClick();
+});
+
+switchTabTriggerForSwipeLeft.addEventListener("click", () => {
+  enableScrollItemByIndex(app.getVariable("State"));
+  disableScrollItemByIndex(app.getVariable("State") + 1);
+  handleSwitchTabForSwipeLeftClick();
+});
+
+switchTabTriggerForSwipeRight.addEventListener("click", () => {
+  enableScrollItemByIndex(app.getVariable("State"));
+  disableScrollItemByIndex(app.getVariable("State") - 1);
+  handleSwitchTabForSwipeRightClick();
 });
 
 function handleTabIconClick(){
@@ -287,8 +299,16 @@ function handleCloseClick(){
   isShowed = false;
 }
 
-function handleSwitchTabClick(){
-  switchTabTrigger.click();
+function handleSwitchTabForButtonsClick(){
+  switchTabTriggerForButtons.click();
+}
+
+function handleSwitchTabForSwipeLeftClick(){
+  switchTabTriggerForSwipeLeft.click();
+}
+
+function handleSwitchTabForSwipeRightClick(){
+  switchTabTriggerForSwipeRight.click();
 }
 
 // Add event listener to create scroll items when DOM content is loaded

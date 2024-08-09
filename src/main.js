@@ -232,11 +232,19 @@ infoTab.addEventListener('touchend', (e) => {
     if (Math.abs(distX) >= threshold && Math.abs(distY) <= threshold) {
       // Horizontal slide detected
       if (distX > 0) {
-        console.log('Slide Right');
         // Trigger a custom slide right event or call a function
+        console.log('Slide Right');
+        switchTabTrigger.click();
+        enableScrollItemByIndex(app.getVariable("State"));
+        disableScrollItemByIndex(app.getVariable("State") - 1);
+        handlePreviousClick;
       } else {
-        console.log('Slide Left');
         // Trigger a custom slide left event or call a function
+        console.log('Slide Left');
+        switchTabTrigger.click();
+        enableScrollItemByIndex(app.getVariable("State"));
+        disableScrollItemByIndex(app.getVariable("State") + 1);
+        handleNextClick();
       }
     } 
   }

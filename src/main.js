@@ -10,6 +10,8 @@ app
     .load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode")
     .then(() => {
       app.setBackgroundColor("skyblue");
+      createScrollItems();
+      showScrollBar();
       setInterval(() => {
         if (app.getVariable("ViewState")) {
           showInfo(app.getVariable("State"));
@@ -314,21 +316,21 @@ function handleSwitchTabForSwipeRightClick(){
 }
 
 // Add event listener to create scroll items when DOM content is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  if (!itemLoaded) {
-    createScrollItems();
-    showScrollBar();
-  }
-  // if (splineLoaded) {
-  //   setInterval(() => {
-  //     if (app.getVariable("ViewState")) {
-  //       showInfo(app.getVariable("State"));
-  //       if (isShowed == false) {
-  //         showCloseButton();
-  //         disableScrollItemByIndex(app.getVariable("State"));
-  //         isShowed = true;
-  //       }
-  //     }
-  //   }, 100); // Check every 100 milliseconds
-  // }
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   if (!itemLoaded) {
+//     createScrollItems();
+//     showScrollBar();
+//   }
+//   // if (splineLoaded) {
+//   //   setInterval(() => {
+//   //     if (app.getVariable("ViewState")) {
+//   //       showInfo(app.getVariable("State"));
+//   //       if (isShowed == false) {
+//   //         showCloseButton();
+//   //         disableScrollItemByIndex(app.getVariable("State"));
+//   //         isShowed = true;
+//   //       }
+//   //     }
+//   //   }, 100); // Check every 100 milliseconds
+//   // }
+// });

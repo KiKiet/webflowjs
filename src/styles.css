@@ -110,18 +110,21 @@ html {
   background-color: #c00;
 }
 
-.loader {
-  position: fixed; /* Fixed position to cover the entire viewport */
+.loader-container {
+  position: fixed;
   top: 50%;
-  transform: translate(-50%, -50%); /* Center the loader */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100; /* Ensure it's above other elements */
+}
+
+.loader {
   border: 8px solid #f3f3f3; /* Light grey */
   border-top: 8px solid #0019FF; /* Blue */
   border-radius: 50%;
   width: 60px;
   height: 60px;
   animation: spin 2s linear infinite, fadeIn 0.5s ease-in-out;
-  z-index: 100; /* Ensure it's above other elements */
-  /*opacity: 0; /* Start with invisible */
 }
 
 @keyframes spin {
@@ -138,6 +141,7 @@ html {
   0% { opacity: 1; }
   100% { opacity: 0; }
 }
+
 /* Keyframes for ease-in from top animation */
 @keyframes scrollBar-easeInFromTop {
   0% {

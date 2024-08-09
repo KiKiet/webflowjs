@@ -5,7 +5,7 @@ const app = new Application(canvas);
 let isShowed = false; // Check if all ui is showed
 let infoShowed = false; // Check if info tab is showed
 const listDiv = document.getElementById("list");
-const loader = document.getElementById("loader");
+const loaderContainer = document.getElementById("loader-container");
 
 app
     .load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode")
@@ -28,12 +28,14 @@ app
 
 // Function to show the loader with a fade-in effect
 function showLoader() {
-  loader.style.display = "block";
+  loaderContainer.style.display = "block";
+  const loader = document.getElementById("loader");
   loader.style.animation = "spin 2s linear infinite, fadeIn 0.5s ease-in-out";
 }
 
 // Function to hide the loader with a fade-out effect
 function hideLoader() {
+  const loader = document.getElementById("loader");
   loader.style.animation = "fadeOut 0.5s ease-in-out";
   setTimeout(() => {
     loader.style.display = "none";

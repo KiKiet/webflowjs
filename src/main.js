@@ -94,7 +94,7 @@ function handleScrollItemClick(index) {
   enableAllScrollItems();
   disableScrollItemByIndex(index);
   if (isShowed){
-    switchTabTrigger.click();
+    switchTabTriggerForButtons.click();
   }
   switch (index) {
     case 1:

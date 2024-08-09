@@ -14,7 +14,6 @@ app
       app.setBackgroundColor("skyblue");
       createScrollItems();
       showScrollBar();
-      hideLoader();
       setInterval(() => {
         if (app.getVariable("ViewState")) {
           showInfo(app.getVariable("State"));
@@ -145,6 +144,7 @@ function showScrollBar() {
     scrollContainer.style.display = "flex";
     scrollContainer.style.animation = "scrollBar-easeInFromTop 0.5s ease-out";
   }
+  hideLoader();
 }
 
 // Function to hide the scroll bar

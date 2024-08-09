@@ -7,7 +7,6 @@ let itemLoaded = false; // Check if scroll items is loaded
 let isShowed = false; // Check if all ui is showed
 let infoShowed = false; // Check if info tab is showed
 const listDiv = document.getElementById("list");
-const listItems = listDiv.querySelectorAll('[role="listitem"]');
 app
     .load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode")
     .then(() => {
@@ -20,6 +19,7 @@ function createScrollItems() {
   // Step 1: Select the parent div using the global variable
   // const listDiv = document.getElementById(listDivId);
   // const listDiv = document.getElementById("list");
+  const listItems = listDiv.querySelectorAll('[role="listitem"]');
   const itemsArray = [];
   listItems.forEach(item => {
     const boothName = item.querySelector('.program');
@@ -165,6 +165,8 @@ async function hideCloseButton() {
 
 const infoTab = document.getElementById("infoTab");
 const infoTabButton = document.getElementById("TabIcon");
+const listItems = listDiv.querySelectorAll('[role="listitem"]');
+
 function delay(milliseconds){
   return new Promise(resolve => {
       setTimeout(resolve, milliseconds);
@@ -191,6 +193,7 @@ async function hideInfo(){
   infoShowed = false;
 }
 
+const closeButton = document.getElementById("close-button");
 const nextButton = document.getElementById("nextButton");
 const previousButton = document.getElementById("previousButton");
 const switchTabTrigger = document.getElementById("switchTabAnimTrigger");
@@ -282,7 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
     createScrollItems();
     showScrollBar();
   }
-  if (app != null) {
+  if (splineLoaded) {
     setInterval(() => {
       if (app.getVariable("ViewState")) {
         showInfo(app.getVariable("State"));

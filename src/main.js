@@ -2,13 +2,15 @@ import { Application } from "@splinetool/runtime";
 
 const canvas = document.getElementById("canvas3d");
 const app = new Application(canvas);
-let itemLoaded = false; // Check if scroll items is loaded
 let isShowed = false; // Check if all ui is showed
 let infoShowed = false; // Check if info tab is showed
 const listDiv = document.getElementById("list");
+const loader = document.getElementById("loader");
+
 app
     .load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode")
     .then(() => {
+      hideLoader();
       app.setBackgroundColor("skyblue");
       createScrollItems();
       showScrollBar();
@@ -23,6 +25,20 @@ app
         }
       }, 100); // Check every 100 milliseconds
     });
+
+// Function to show the loader with a fade-in effect
+function showLoader() {
+  loader.style.display = "block";
+  loader.style.animation = "spin 2s linear infinite, fadeIn 0.5s ease-in-out";
+}
+
+// Function to hide the loader with a fade-out effect
+function hideLoader() {
+  loader.style.animation = "fadeOut 0.5s ease-in-out";
+  setTimeout(() => {
+    loader.style.display = "none";
+  }, 500); // Wait for the fadeOut animation to complete
+}
 
 // Function to dynamically create scroll items
 function createScrollItems() {
@@ -316,21 +332,23 @@ function handleSwitchTabForSwipeRightClick(){
 }
 
 // Add event listener to create scroll items when DOM content is loaded
-// document.addEventListener("DOMContentLoaded", () => {
-//   if (!itemLoaded) {
-//     createScrollItems();
-//     showScrollBar();
-//   }
-//   // if (splineLoaded) {
-//   //   setInterval(() => {
-//   //     if (app.getVariable("ViewState")) {
-//   //       showInfo(app.getVariable("State"));
-//   //       if (isShowed == false) {
-//   //         showCloseButton();
-//   //         disableScrollItemByIndex(app.getVariable("State"));
-//   //         isShowed = true;
-//   //       }
-//   //     }
-//   //   }, 100); // Check every 100 milliseconds
-//   // }
-// });
+document.addEventListener("DOMContentLoaded", () => {
+  // Show the loader when the page starts loading
+  showLoader();
+  // if (!itemLoaded) {
+  //   createScrollItems();
+  //   showScrollBar();
+  // }
+  // if (splineLoaded) {
+  //   setInterval(() => {
+  //     if (app.getVariable("ViewState")) {
+  //       showInfo(app.getVariable("State"));
+  //       if (isShowed == false) {
+  //         showCloseButton();
+  //         disableScrollItemByIndex(app.getVariable("State"));
+  //         isShowed = true;
+  //       }
+  //     }
+  //   }, 100); // Check every 100 milliseconds
+  // }
+});

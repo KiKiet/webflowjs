@@ -2,7 +2,6 @@ import { Application } from "@splinetool/runtime";
 
 const canvas = document.getElementById("canvas3d");
 const app = new Application(canvas);
-let itemLoaded = false;
 let isShowed = false; // Check if all ui is showed
 let infoShowed = false; // Check if info tab is showed
 const listDiv = document.getElementById("list");
@@ -12,6 +11,7 @@ app
     .load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode")
     .then(() => {
       app.setBackgroundColor("skyblue");
+      hideLoader();
       createScrollItems();
       showScrollBar();
       setInterval(() => {
@@ -62,7 +62,6 @@ function createScrollItems() {
     });
     scrollContent.appendChild(item);
   }
-  itemLoaded = true;
 }
 
 // Function to disable a scroll item by its index
@@ -144,7 +143,6 @@ function showScrollBar() {
     scrollContainer.style.display = "flex";
     scrollContainer.style.animation = "scrollBar-easeInFromTop 0.5s ease-out";
   }
-  hideLoader();
 }
 
 // Function to hide the scroll bar

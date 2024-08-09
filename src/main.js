@@ -10,10 +10,10 @@ const loader = document.getElementById("loader");
 app
     .load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode")
     .then(() => {
-      hideLoader();
       app.setBackgroundColor("skyblue");
       createScrollItems();
       showScrollBar();
+      hideLoader();
       setInterval(() => {
         if (app.getVariable("ViewState")) {
           showInfo(app.getVariable("State"));

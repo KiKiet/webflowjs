@@ -272,12 +272,14 @@ switchTabTriggerForSwipeLeft.addEventListener("click", () => {
   enableScrollItemByIndex(app.getVariable("State"));
   disableScrollItemByIndex(app.getVariable("State") + 1);
   handleSwitchTabForSwipeLeftClick();
+  handleNextClick();
 });
 
 switchTabTriggerForSwipeRight.addEventListener("click", () => {
   enableScrollItemByIndex(app.getVariable("State"));
   disableScrollItemByIndex(app.getVariable("State") - 1);
   handleSwitchTabForSwipeRightClick();
+  handlePreviousClick();
 });
 
 function handleTabIconClick(){

@@ -2,7 +2,6 @@ import { Application } from "@splinetool/runtime";
 
 const canvas = document.getElementById("canvas3d");
 const app = new Application(canvas);
-let splineLoaded = false; // Check if spline scene is loaded
 let itemLoaded = false; // Check if scroll items is loaded
 let isShowed = false; // Check if all ui is showed
 let infoShowed = false; // Check if info tab is showed
@@ -10,7 +9,6 @@ const listDiv = document.getElementById("list");
 app
     .load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode")
     .then(() => {
-      splineLoaded = true;
       app.setBackgroundColor("skyblue");
       setInterval(() => {
         if (app.getVariable("ViewState")) {
@@ -235,16 +233,12 @@ infoTab.addEventListener('touchend', (e) => {
         // Trigger a custom slide right event or call a function
         console.log('Slide Right');
         switchTabTrigger.click();
-        enableScrollItemByIndex(app.getVariable("State"));
-        disableScrollItemByIndex(app.getVariable("State") - 1);
-        handlePreviousClick;
+        previousButton.click();
       } else {
         // Trigger a custom slide left event or call a function
         console.log('Slide Left');
         switchTabTrigger.click();
-        enableScrollItemByIndex(app.getVariable("State"));
-        disableScrollItemByIndex(app.getVariable("State") + 1);
-        handleNextClick();
+        nextButton.click();
       }
     } 
   }

@@ -12,6 +12,16 @@ app
     .then(() => {
       splineLoaded = true;
       app.setBackgroundColor("skyblue");
+      setInterval(() => {
+        if (app.getVariable("ViewState")) {
+          showInfo(app.getVariable("State"));
+          if (isShowed == false) {
+            showCloseButton();
+            disableScrollItemByIndex(app.getVariable("State"));
+            isShowed = true;
+          }
+        }
+      }, 100); // Check every 100 milliseconds
     });
 
 // Function to dynamically create scroll items
@@ -285,16 +295,16 @@ document.addEventListener("DOMContentLoaded", () => {
     createScrollItems();
     showScrollBar();
   }
-  if (splineLoaded) {
-    setInterval(() => {
-      if (app.getVariable("ViewState")) {
-        showInfo(app.getVariable("State"));
-        if (isShowed == false) {
-          showCloseButton();
-          disableScrollItemByIndex(app.getVariable("State"));
-          isShowed = true;
-        }
-      }
-    }, 100); // Check every 100 milliseconds
-  }
+  // if (splineLoaded) {
+  //   setInterval(() => {
+  //     if (app.getVariable("ViewState")) {
+  //       showInfo(app.getVariable("State"));
+  //       if (isShowed == false) {
+  //         showCloseButton();
+  //         disableScrollItemByIndex(app.getVariable("State"));
+  //         isShowed = true;
+  //       }
+  //     }
+  //   }, 100); // Check every 100 milliseconds
+  // }
 });

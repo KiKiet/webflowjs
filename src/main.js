@@ -10,7 +10,7 @@ const loaderContainer = document.getElementById("loader-container");
 app
     .load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode")
     .then(() => {
-      app.setBackgroundColor("skyblue");
+      app.setBackgroundColor("#cfddff");
       hideLoader();
       createScrollItems();
       showScrollBar();
@@ -36,7 +36,7 @@ function showLoader() {
 // Function to hide the loader with a fade-out effect
 function hideLoader() {
   const loader = document.getElementById("loader");
-  loader.style.animation = "fadeOut 0.5s ease-in-out";
+  loader.style.animation = "spin 2s linear infinite, fadeOut 0.5s ease-in-out";
   setTimeout(() => {
     loader.style.display = "none";
   }, 500); // Wait for the fadeOut animation to complete

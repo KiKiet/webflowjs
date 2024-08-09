@@ -2,19 +2,25 @@ import { Application } from "@splinetool/runtime";
 
 const canvas = document.getElementById("canvas3d");
 const app = new Application(canvas);
+let splineLoaded = false; // Check if spline scene is loaded
 let itemLoaded = false; // Check if scroll items is loaded
 let isShowed = false; // Check if all ui is showed
-let infoShowed = false; // Check if info tab iss showed
-let currentlySelectedItem = null; // Track the currently selected item
+let infoShowed = false; // Check if info tab is showed
 const listDiv = document.getElementById("list");
-app.load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode");
+const listItems = listDiv.querySelectorAll('[role="listitem"]');
+app
+    .load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode")
+    .then(() => {
+      splineLoaded = true;
+      app.setBackgroundColor("0019FF");
+    });
 
 // Function to dynamically create scroll items
 function createScrollItems() {
   // Step 1: Select the parent div using the global variable
   // const listDiv = document.getElementById(listDivId);
   // const listDiv = document.getElementById("list");
-  const listItems = listDiv.querySelectorAll('[role="listitem"]');
+  // const listItems = listDiv.querySelectorAll('[role="listitem"]');
   const itemsArray = [];
   listItems.forEach(item => {
     const boothName = item.querySelector('.program');
@@ -34,21 +40,20 @@ function createScrollItems() {
   itemLoaded = true;
 }
 
+const scrollItems = document.querySelectorAll(".scroll-item");
+
 // Function to disable a scroll item by its index
 function disableScrollItemByIndex(index) {
-  const scrollItems = document.querySelectorAll(".scroll-item");
   scrollItems[index - 1].classList.add("disabled");
 }
 
 // Function to disable a scroll item by its index
 function enableScrollItemByIndex(index) {
-  const scrollItems = document.querySelectorAll(".scroll-item");
   scrollItems[index - 1].classList.remove("disabled");
 }
 
 // Function to enable all scroll items
 function enableAllScrollItems() {
-  const scrollItems = document.querySelectorAll(".scroll-item");
   scrollItems.forEach((item) => {
     item.classList.remove("disabled");
   });
@@ -128,9 +133,15 @@ function hideScrollBar() {
   }
 }
 
+const tabIcon = document.getElementById("TabIcon");
+const nextButton = document.getElementById("nextButton");
+const previousButton = document.getElementById("previousButton");
+const closeButton = document.getElementById("close-button");
+const switchTabTrigger = document.getElementById("switchTabAnimTrigger");
+const infoTab = document.getElementById("infoTab");
+const scrollContainer = document.getElementById("scroll-container");
+
 async function showCloseButton() {
-  const closeButton = document.getElementById("close-button");
-  const scrollContainer = document.getElementById("scroll-container");
   scrollContainer.style.width = "calc(100% - 43px)";
   scrollContainer.style.animation = "shortenScrollBar 0.5s ease-out"; // Apply shorten animation
   await delay(500);
@@ -142,8 +153,6 @@ async function showCloseButton() {
 }
 
 async function hideCloseButton() {
-  const closeButton = document.getElementById("close-button");
-  const scrollContainer = document.getElementById("scroll-container");
   closeButton.style.animation = "button-easeOutToTop 0.5s ease-out";
   await delay(400);
   closeButton.style.display = "none";
@@ -158,9 +167,6 @@ async function hideCloseButton() {
   enableAllScrollItems();
 }
 
-const infoTab = document.getElementById("infoTab");
-const infoTabButton = document.getElementById("TabIcon");
-const listItems = listDiv.querySelectorAll('[role="listitem"]');
 function delay(milliseconds){
   return new Promise(resolve => {
       setTimeout(resolve, milliseconds);
@@ -187,11 +193,40 @@ async function hideInfo(){
   infoShowed = false;
 }
 
-const tabIcon = document.getElementById("TabIcon");
-const nextButton = document.getElementById("nextButton");
-const previousButton = document.getElementById("previousButton");
-const closeButton = document.getElementById("close-button");
-const switchTabTrigger = document.getElementById("switchTabAnimTrigger");
+let startX = 0;
+let startY = 0;
+let distX = 0;
+let distY = 0;
+const threshold = 50; // Minimum distance to be considered a slide
+const allowedTime = 300; // Maximum time to consider it a slide
+let startTime = 0;
+
+infoTab.addEventListener('touchstart', (e) => {
+  const touchObj = e.changedTouches[0];
+  startX = touchObj.pageX;
+  startY = touchObj.pageY;
+  startTime = new Date().getTime(); // Record time when touch starts
+});
+
+infoTab.addEventListener('touchend', (e) => {
+  const touchObj = e.changedTouches[0];
+  distX = touchObj.pageX - startX; // Distance moved horizontally
+  distY = touchObj.pageY - startY; // Distance moved vertically
+  const elapsedTime = new Date().getTime() - startTime; // Time elapsed
+
+  if (elapsedTime <= allowedTime) { // Check that time threshold is met
+    if (Math.abs(distX) >= threshold && Math.abs(distY) <= threshold) {
+      // Horizontal slide detected
+      if (distX > 0) {
+        console.log('Slide Right');
+        // Trigger a custom slide right event or call a function
+      } else {
+        console.log('Slide Left');
+        // Trigger a custom slide left event or call a function
+      }
+    } 
+  }
+});
 
 tabIcon.addEventListener("click", () => {
   handleTabIconClick();
@@ -246,7 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
     createScrollItems();
     showScrollBar();
   }
-  if (app != null) {
+  if (splineLoaded) {
     setInterval(() => {
       if (app.getVariable("ViewState")) {
         showInfo(app.getVariable("State"));

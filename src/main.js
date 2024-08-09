@@ -2,6 +2,7 @@ import { Application } from "@splinetool/runtime";
 
 const canvas = document.getElementById("canvas3d");
 const app = new Application(canvas);
+let itemLoaded = false;
 let isShowed = false; // Check if all ui is showed
 let infoShowed = false; // Check if info tab is showed
 const listDiv = document.getElementById("list");

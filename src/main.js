@@ -336,7 +336,6 @@ function handleSwitchTabForSwipeRightClick(){
 document.addEventListener("DOMContentLoaded", () => {
   // Show the loader when the page starts loading
   showLoader();
-  hideInfo();
   // if (!itemLoaded) {
   //   createScrollItems();
   //   showScrollBar();

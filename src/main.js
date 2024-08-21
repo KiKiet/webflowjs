@@ -337,4 +337,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // Show the loader when the page starts loading
   showLoader();
   infoTabButton.click();
+  // if (!itemLoaded) {
+  //   createScrollItems();
+  //   showScrollBar();
+  // }
+  // if (splineLoaded) {
+  //   setInterval(() => {
+  //     if (app.getVariable("ViewState")) {
+  //       showInfo(app.getVariable("State"));
+  //       if (isShowed == false) {
+  //         showCloseButton();
+  //         disableScrollItemByIndex(app.getVariable("State"));
+  //         isShowed = true;
+  //       }
+  //     }
+  //   }, 100); // Check every 100 milliseconds
+  // }
 });

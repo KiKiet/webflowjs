@@ -91,6 +91,7 @@ html {
   cursor: pointer;
   display: none;
   animation: button-easeInFromTop 0.5s ease-out;
+  animation: button-easeOutToTop 0.5s ease-out;
 }
 
 .close-button:hover {

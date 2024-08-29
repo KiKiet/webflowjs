@@ -200,7 +200,7 @@ html {
 
 @media (max-width: 480px) {
   .scroll-container-wrapper {
-    width: 90%; /* Adjust width for even smaller screens */
+    width: 80%; /* Adjust width for even smaller screens */
     top: 5px;
   }
 

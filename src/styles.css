@@ -130,34 +130,26 @@ html {
   100% { opacity: 0; }
 }
 
-/* Keyframes for ease-in from top animation */
-@keyframes button-easeInFromTop {
+/* Keyframes for ease-in from top right corner animation */
+@keyframes button-easeInFromTopRight {
   0% {
     opacity: 0;
-    transform: translateY(-30px); /* Start higher up */
-  }
-  60% {
-    opacity: 1;
-    transform: translateY(10px); /* Overshoot a bit */
+    transform: translate(20px, -20px); /* Move from top right */
   }
   100% {
     opacity: 1;
-    transform: translateY(0); /* Settle in final position */
+    transform: translate(0, 0); /* Final position */
   }
 }
 
-@keyframes button-easeOutToTop {
+@keyframes button-easeOutToTopRight {
   0% {
     opacity: 1;
-    transform: translateY(0); /* Start from original position */
-  }
-  40% {
-    opacity: 1;
-    transform: translateY(10px); /* Overshoot a bit before moving up */
+    transform: translate(0, 0); /* Original position */
   }
   100% {
     opacity: 0;
-    transform: translateY(-50px); /* Move above and fade out */
+    transform: translate(20px, -50px); /* Move to top right and above */
   }
 }
 

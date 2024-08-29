@@ -149,26 +149,19 @@ function showScrollBar() {
 
 async function showCloseButton() {
   const closeButton = document.getElementById("close-button");
-  const scrollContainer = document.getElementById("scroll-container");
-  scrollContainer.style.width = "calc(100% - 43px)";
-  scrollContainer.style.animation = "shortenScrollBar 0.5s ease-out"; // Apply shorten animation
   await delay(500);
   closeButton.style.display = "flex";
   closeButton.style.animation = "button-easeInFromTop 0.5s ease-out"; // Apply animation
 
   // Enable pointer events for canvas to block interactions with canvas
-    canvas.style.pointerEvents = "none";
+  canvas.style.pointerEvents = "none";
 }
 
 async function hideCloseButton() {
   const closeButton = document.getElementById("close-button");
-  const scrollContainer = document.getElementById("scroll-container");
   closeButton.style.animation = "button-easeOutToTop 0.5s ease-out";
   await delay(400);
   closeButton.style.display = "none";
-
-  scrollContainer.style.width = "100%"; // Reset width when close button is hidden
-  scrollContainer.style.animation = "lengthenScrollBar 1s ease-out"; // Apply lengthen animation
 
   // Disable pointer events for canvas
   canvas.style.pointerEvents = "auto";

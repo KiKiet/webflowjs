@@ -57,7 +57,7 @@ html {
 .scroll-container-wrapper {
   position: absolute;
   top: 60px;
-  left: 20px;
+  left: 50px;
   transform: translateX(0);
   display: none;
   flex-direction: column;
@@ -79,19 +79,24 @@ html {
 
 .close-button {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 20px; /* Distance from the top */
+  right: 20px; /* Distance from the right */
   z-index: 4;
-  background-color: #f00;
-  color: #fff;
+  background-color: #f00; /* Red background */
+  color: #fff; /* White text color (optional, can be removed) */
   border: none;
-  padding: 5px 10px;
-  margin-left: 87%;
-  border-radius: 5px;
+  padding: 0; /* Remove padding to make it a clean square */
+  width: 30px; /* Small square button */
+  height: 30px; /* Small square button */
+  border-radius: 5px; /* Slight rounding */
   cursor: pointer;
-  display: none;
-  animation: button-easeInFromTop 0.5s ease-out;
-  animation: button-easeOutToTop 0.5s ease-out;
+  display: none; /* Initially hidden */
+  animation: button-easeInFromTopRight 0.5s ease-out,
+    button-easeOutToTopRight 0.5s ease-out;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  font-size: 16px; /* Adjust font size */
+  line-height: 1; /* Ensure no extra line spacing */
 }
 
 .close-button:hover {

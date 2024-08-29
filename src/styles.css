@@ -85,8 +85,7 @@ html {
   background-color: #f00;
   color: #fff;
   border: none;
-  width: 30px;
-  height: 30px;
+  padding: 20px 10px;
   border-radius: 5px;
   cursor: pointer;
   display: none;

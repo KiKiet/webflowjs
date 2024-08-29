@@ -8,7 +8,7 @@ const listDiv = document.getElementById("list");
 const loaderContainer = document.getElementById("loader-container");
 
 app
-    .load("https://prod.spline.design/2Rt17uOifuOTCcU2/scene.splinecode")
+    .load("https://prod.spline.design/C4gOgqmxM3MgNjvH/scene.splinecode")
     .then(() => {
       app.setBackgroundColor("#cfddff");
       hideLoader();

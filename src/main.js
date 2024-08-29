@@ -215,10 +215,8 @@ hamburgerMenu.addEventListener("click", () => {
   hamburgerMenu.classList.toggle("active");
   if (hamburgerMenu.classList.contains("active")) {
     scrollContainerWrapper.style.display = "flex";
-    closeButton.style.display = "block";
   } else {
     scrollContainerWrapper.style.display = "none";
-    closeButton.style.display = "none";
   }
 });
 

@@ -13,6 +13,7 @@ app
       app.setBackgroundColor("#cfddff");
       hideLoader();
       createScrollItems();
+      ShowHamburgerMenu();
       // showScrollBar();
       setInterval(() => {
         if (app.getVariable("ViewState")) {

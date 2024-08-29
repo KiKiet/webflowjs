@@ -13,7 +13,7 @@ app
       app.setBackgroundColor("#cfddff");
       hideLoader();
       createScrollItems();
-      showScrollBar();
+      // showScrollBar();
       setInterval(() => {
         if (app.getVariable("ViewState")) {
           showInfo(app.getVariable("State"));
@@ -147,19 +147,6 @@ function showScrollBar() {
   }
 }
 
-// Function to hide the scroll bar
-function hideScrollBar() {
-  const scrollContainer = document.getElementById("scroll-container-wrapper");
-  if (scrollContainer) {
-    scrollContainer.style.display = "none";
-  }
-  // Disable pointer events for canvas2d
-  const canvas2d = document.getElementById("canvas2d");
-  if (canvas2d) {
-    canvas2d.style.pointerEvents = "none";
-  }
-}
-
 async function showCloseButton() {
   const closeButton = document.getElementById("close-button");
   const scrollContainer = document.getElementById("scroll-container");
@@ -219,6 +206,21 @@ async function hideInfo(){
   infoTab.style.display = 'none';
   infoShowed = false;
 }
+
+const hamburgerMenu = document.getElementById("hamburger-menu");
+const scrollContainerWrapper = document.getElementById("scroll-container-wrapper");
+
+// Toggle menu visibility on hamburger click
+hamburgerMenu.addEventListener("click", () => {
+  hamburgerMenu.classList.toggle("active");
+  if (hamburgerMenu.classList.contains("active")) {
+    scrollContainerWrapper.style.display = "flex";
+    closeButton.style.display = "block";
+  } else {
+    scrollContainerWrapper.style.display = "none";
+    closeButton.style.display = "none";
+  }
+});
 
 const closeButton = document.getElementById("close-button");
 const nextButton = document.getElementById("nextButton");

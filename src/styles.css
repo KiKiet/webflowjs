@@ -171,7 +171,7 @@ html {
   }
 
   .close-button {
-    left: calc(50% - 250px); /* Adjust position for smaller screens */
+    right: calc(50% - 250px); /* Adjust position for smaller screens */
   }
 }
 
@@ -187,6 +187,6 @@ html {
   }
 
   .close-button {
-    left: calc(50% - 190px); /* Adjust position for smaller screens */
+    right: calc(50% - 190px); /* Adjust position for smaller screens */
   }
 }

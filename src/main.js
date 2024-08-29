@@ -204,14 +204,16 @@ const hamburgerMenu = document.getElementById("hamburger-menu");
 const scrollContainerWrapper = document.getElementById("scroll-container-wrapper");
 
 // Toggle menu visibility on hamburger click
-hamburgerMenu.addEventListener("click", () => {
+hamburgerMenu.addEventListener("click", async () => {
   hamburgerMenu.classList.toggle("active");
   if (hamburgerMenu.classList.contains("active")) {
     scrollContainerWrapper.style.display = "flex";
     scrollContainerWrapper.style.animation = "expandDown 0.5s ease-out forwards";
   } else {
-    scrollContainerWrapper.style.display = "none";
     scrollContainerWrapper.style.animation = "fadeOutUp 0.5s ease-out forwards";
+    await delay(600);
+    scrollContainerWrapper.style.display = "none";
+    
   }
 });
 

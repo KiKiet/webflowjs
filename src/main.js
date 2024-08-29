@@ -208,8 +208,10 @@ hamburgerMenu.addEventListener("click", () => {
   hamburgerMenu.classList.toggle("active");
   if (hamburgerMenu.classList.contains("active")) {
     scrollContainerWrapper.style.display = "flex";
+    scrollContainerWrapper.style.animation = "expandDown 0.5s ease-out forwards";
   } else {
     scrollContainerWrapper.style.display = "none";
+    scrollContainerWrapper.style.animation = "fadeOutUp 0.5s ease-out forwards";
   }
 });
 

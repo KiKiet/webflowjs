@@ -203,6 +203,10 @@ async function hideInfo(){
 const hamburgerMenu = document.getElementById("hamburger-menu");
 const scrollContainerWrapper = document.getElementById("scroll-container-wrapper");
 
+function ShowHamburgerMenu(){
+  hamburgerMenu.style.display = "flex";
+}
+
 // Toggle menu visibility on hamburger click
 hamburgerMenu.addEventListener("click", async () => {
   hamburgerMenu.classList.toggle("active");

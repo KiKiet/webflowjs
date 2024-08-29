@@ -134,22 +134,30 @@ html {
 @keyframes button-easeInFromTop {
   0% {
     opacity: 0;
-    transform: translate(0, -20px); /* Move from above */
+    transform: translateY(-30px); /* Start higher up */
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(10px); /* Overshoot a bit */
   }
   100% {
     opacity: 1;
-    transform: translate(0, 0); /* Move from above */
+    transform: translateY(0); /* Settle in final position */
   }
 }
 
 @keyframes button-easeOutToTop {
   0% {
     opacity: 1;
-    transform: translate(0, 0); /* Original position */
+    transform: translateY(0); /* Start from original position */
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(10px); /* Overshoot a bit before moving up */
   }
   100% {
     opacity: 0;
-    transform: translate(0, -50px); /* Move above */
+    transform: translateY(-50px); /* Move above and fade out */
   }
 }
 

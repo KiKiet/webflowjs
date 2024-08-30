@@ -100,7 +100,7 @@ function handleScrollItemClick(index) {
   console.log(`Scroll item ${index} clicked!`);
   app.setVariable("ClickFromScrollbar", true);
   enableAllScrollItems();
-  disableScrollItemByIndex(index);
+  // disableScrollItemByIndex(index);
   if (isShowed){
     switchTabTriggerForButtons.click();
   }

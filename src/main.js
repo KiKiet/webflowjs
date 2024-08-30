@@ -105,7 +105,7 @@ function handleScrollItemClick(index) {
     switchTabTriggerForButtons.click();
   }
   if (app.getVariable("State") != index) {
-    app.emitEvent("mouseUp", boothIconName[index]);
+    app.emitEvent("mouseUp", boothIconName[index-1]);
   }
   // switch (index) {
   //   case 1:

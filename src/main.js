@@ -69,7 +69,7 @@ function createScrollItems() {
     item.className = "scroll-item";
     item.textContent = itemsArray[i];
     item.addEventListener("click", () => {
-      handleScrollItemClick(i);
+      handleScrollItemClick(i+1);
     });
     scrollContent.appendChild(item);
   }

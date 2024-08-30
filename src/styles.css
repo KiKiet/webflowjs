@@ -62,7 +62,7 @@ html {
   transform: translateX(0);
   display: none;
   flex-direction: column;
-  width: 60%;
+  width: 65%;
   z-index: 3;
   background: rgba(255, 255, 255, 0.95);
   padding: 10px;
@@ -201,7 +201,7 @@ html {
 
 @media (max-width: 480px) {
   .scroll-container-wrapper {
-    width: 60%; /* Adjust width for even smaller screens */
+    width: 65%; /* Adjust width for even smaller screens */
     top: 5px;
   }
 

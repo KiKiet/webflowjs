@@ -6,6 +6,14 @@ let isShowed = false; // Check if all ui is showed
 let infoShowed = false; // Check if info tab is showed
 const listDiv = document.getElementById("list");
 const loaderContainer = document.getElementById("loader-container");
+const boothIconName = ["IconBOSCH", "IconHCLTech", "IconNetcompany", "IconSchneider",
+  "Iconnab", "IconKatalon", "IconMarvell", "IconSchaeffler", "IconFaraday",
+  "IconVirtuos", "IconPFourP", "IconPlasticPeople", "IconVietjetAir", "IconRadisson", "IconCathayPacific",
+  "IconMarriot", "IconProjectPluto", "IconLimLoop", "IconRMIT", "IconAveryDennison", "IconSaint-Gobain",
+  "IconMaersk", "IconDHL", "IconLi&Fung", "IconShuttlerock", "IconUniClo", "IconDentsu", "IconGiangdayviVietNam",
+  "IconUnicef", "IconPWC", "IconChristinaNobleFoundation", "IconTikTok", "IconVietThai", "IconSamsung",
+  "IconTotalEnergies", "IconNestle", "IconMondelez", "IconPerfetti", "IconUniversalRobina", "IconP&G", "IconShopee",
+  "IconCentralRetail", "IconDKSH"]
 
 app
     .load("https://prod.spline.design/C4gOgqmxM3MgNjvH/scene.splinecode")
@@ -56,10 +64,10 @@ function createScrollItems() {
   });
   const scrollContent = document.querySelector(".scroll-content");
 
-  for (let i = 1; i <= itemsArray.length; i++) {
+  for (let i = 0; i < itemsArray.length; i++) {
     const item = document.createElement("div");
     item.className = "scroll-item";
-    item.textContent = itemsArray[i-1];
+    item.textContent = itemsArray[i];
     item.addEventListener("click", () => {
       handleScrollItemClick(i);
     });
@@ -70,13 +78,13 @@ function createScrollItems() {
 // Function to disable a scroll item by its index
 function disableScrollItemByIndex(index) {
   const scrollItems = document.querySelectorAll(".scroll-item");
-  scrollItems[index - 1].classList.add("disabled");
+  scrollItems[index].classList.add("disabled");
 }
 
 // Function to disable a scroll item by its index
 function enableScrollItemByIndex(index) {
   const scrollItems = document.querySelectorAll(".scroll-item");
-  scrollItems[index - 1].classList.remove("disabled");
+  scrollItems[index].classList.remove("disabled");
 }
 
 // Function to enable all scroll items
@@ -91,51 +99,53 @@ function enableAllScrollItems() {
 function handleScrollItemClick(index) {
   console.log(`Scroll item ${index} clicked!`);
   app.setVariable("ClickFromScrollbar", true);
-
   enableAllScrollItems();
   disableScrollItemByIndex(index);
   if (isShowed){
     switchTabTriggerForButtons.click();
   }
-  switch (index) {
-    case 1:
-      if (app.getVariable("State") != 1){
-        app.emitEvent("mouseUp", "Icon");
-      }
-      break;
-    case 2:
-      if (app.getVariable("State") != 2){
-        app.emitEvent("mouseUp", "IconFilm");
-      }
-      break;
-    case 3:
-      if (app.getVariable("State") != 3){
-        app.emitEvent("mouseUp", "IconGame");
-      }
-      break;
-    case 4:
-      if (app.getVariable("State") != 4){
-        app.emitEvent("mouseUp", "IconDMedia");
-      }
-      break;
-    case 5:
-      if (app.getVariable("State") != 5){
-        app.emitEvent("mouseUp", "IconAMH");
-      }
-      break;
-    case 6:
-      if (app.getVariable("State") != 6){
-        app.emitEvent("mouseUp", "IconAviation");
-      }
-      break;
-    case 7:
-      if (app.getVariable("State") != 7){
-        app.emitEvent("mouseUp", "IconEmotion");
-      }
-      break;
-    default:
-      break;
+  if (app.getVariable("State") != index) {
+    app.emitEvent("mouseUp", boothIconName[index]);
   }
+  // switch (index) {
+  //   case 1:
+  //     if (app.getVariable("State") != 1) {
+  //       app.emitEvent("mouseUp", "Icon");
+  //     }
+  //     break;
+  //   case 2:
+  //     if (app.getVariable("State") != 2) {
+  //       app.emitEvent("mouseUp", "IconFilm");
+  //     }
+  //     break;
+  //   case 3:
+  //     if (app.getVariable("State") != 3) {
+  //       app.emitEvent("mouseUp", "IconGame");
+  //     }
+  //     break;
+  //   case 4:
+  //     if (app.getVariable("State") != 4) {
+  //       app.emitEvent("mouseUp", "IconDMedia");
+  //     }
+  //     break;
+  //   case 5:
+  //     if (app.getVariable("State") != 5) {
+  //       app.emitEvent("mouseUp", "IconAMH");
+  //     }
+  //     break;
+  //   case 6:
+  //     if (app.getVariable("State") != 6) {
+  //       app.emitEvent("mouseUp", "IconAviation");
+  //     }
+  //     break;
+  //   case 7:
+  //     if (app.getVariable("State") != 7) {
+  //       app.emitEvent("mouseUp", "IconEmotion");
+  //     }
+  //     break;
+  //   default:
+  //     break;
+  // }
   // Add your custom logic here
 }
 

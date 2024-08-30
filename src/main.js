@@ -10,9 +10,9 @@ const boothIconName = ["IconBOSCH", "IconHCLTech", "IconNetcompany", "IconSchnei
   "Iconnab", "IconKatalon", "IconMarvell", "IconSchaeffler", "IconFaraday",
   "IconVirtuos", "IconPFourP", "IconPlasticPeople", "IconVietjetAir", "IconRadisson", "IconCathayPacific",
   "IconMarriot", "IconProjectPluto", "IconLimLoop", "IconRMIT", "IconAveryDennison", "IconSaint-Gobain",
-  "IconMaersk", "IconDHL", "IconLiFung", "IconShuttlerock", "IconUniClo", "IconDentsu", "IconGiangdayviVietNam",
+  "IconMaersk", "IconDHL", "IconLi&Fung", "IconShuttlerock", "IconUniClo", "IconDentsu", "IconGiangdayviVietNam",
   "IconUnicef", "IconPWC", "IconChristinaNobleFoundation", "IconTikTok", "IconVietThai", "IconSamsung",
-  "IconTotalEnergies", "IconNestle", "IconMondelez", "IconPerfetti", "IconUniversalRobina", "IconPG", "IconShopee",
+  "IconTotalEnergies", "IconNestle", "IconMondelez", "IconPerfetti", "IconUniversalRobina", "IconP&G", "IconShopee",
   "IconCentralRetail", "IconDKSH"]
 
 app

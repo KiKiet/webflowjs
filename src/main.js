@@ -10,7 +10,7 @@ const boothIconName = ["IconBOSCH", "IconHCLTech", "IconNetcompany", "IconSchnei
   "Iconnab", "IconKatalon", "IconMarvell", "IconSchaeffler", "IconFaraday",
   "IconVirtuos", "IconPFourP", "IconPlasticPeople", "IconVietjetAir", "IconRadisson", "IconCathayPacific",
   "IconMarriot", "IconProjectPluto", "IconLimLoop", "IconRMIT", "IconAveryDennison", "IconSaint-Gobain",
-  "IconMaersk", "IconDHL", "IconLi&Fung", "IconShuttlerock", "IconUniClo", "IconDentsu", "IconGiangdayviVietNam",
+  "IconMaersk", "IconDHL", "IconLi&Fung", "IconDentsu",  "IconUniClo","IconShuttlerock", "IconGiangdayviVietNam",
   "IconUnicef", "IconPWC", "IconChristinaNobleFoundation", "IconTikTok", "IconVietThai", "IconSamsung",
   "IconTotalEnergies", "IconNestle", "IconMondelez", "IconPerfetti", "IconUniversalRobina", "IconP&G", "IconShopee",
   "IconCentralRetail", "IconDKSH"]
@@ -78,13 +78,13 @@ function createScrollItems() {
 // Function to disable a scroll item by its index
 function disableScrollItemByIndex(index) {
   const scrollItems = document.querySelectorAll(".scroll-item");
-  scrollItems[index].classList.add("disabled");
+  scrollItems[index-1].classList.add("disabled");
 }
 
 // Function to disable a scroll item by its index
 function enableScrollItemByIndex(index) {
   const scrollItems = document.querySelectorAll(".scroll-item");
-  scrollItems[index].classList.remove("disabled");
+  scrollItems[index-1].classList.remove("disabled");
 }
 
 // Function to enable all scroll items
@@ -107,46 +107,6 @@ function handleScrollItemClick(index) {
   if (app.getVariable("State") != index) {
     app.emitEvent("mouseUp", boothIconName[index-1]);
   }
-  // switch (index) {
-  //   case 1:
-  //     if (app.getVariable("State") != 1) {
-  //       app.emitEvent("mouseUp", "Icon");
-  //     }
-  //     break;
-  //   case 2:
-  //     if (app.getVariable("State") != 2) {
-  //       app.emitEvent("mouseUp", "IconFilm");
-  //     }
-  //     break;
-  //   case 3:
-  //     if (app.getVariable("State") != 3) {
-  //       app.emitEvent("mouseUp", "IconGame");
-  //     }
-  //     break;
-  //   case 4:
-  //     if (app.getVariable("State") != 4) {
-  //       app.emitEvent("mouseUp", "IconDMedia");
-  //     }
-  //     break;
-  //   case 5:
-  //     if (app.getVariable("State") != 5) {
-  //       app.emitEvent("mouseUp", "IconAMH");
-  //     }
-  //     break;
-  //   case 6:
-  //     if (app.getVariable("State") != 6) {
-  //       app.emitEvent("mouseUp", "IconAviation");
-  //     }
-  //     break;
-  //   case 7:
-  //     if (app.getVariable("State") != 7) {
-  //       app.emitEvent("mouseUp", "IconEmotion");
-  //     }
-  //     break;
-  //   default:
-  //     break;
-  // }
-  // Add your custom logic here
 }
 
 // Function to show the scroll bar

@@ -90,6 +90,33 @@ html {
   animation: dropdown-expand 0.3s ease-out;
 }
 
+/* Style for the dropdown title */
+.dropdown-title {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  border-radius: 5px 5px 0 0;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-title:hover {
+  background-color: #e0e0e0;
+}
+
+/* Style for the container holding booth items */
+.booths-container {
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 0 0 5px 5px;
+  max-height: 300px; /* Limit height, scroll if too long */
+  overflow-y: auto; /* Enable scrolling if content exceeds max height */
+}
+
 .dropdown-item {
   padding: 10px;
   background-color: #f3f3f3;
@@ -109,6 +136,20 @@ html {
 .dropdown-item:active {
   background-color: #ccc;
   transform: scale(0.98); /* Slight shrink on click */
+}
+
+/* Additional style for booths container when scrolling */
+.booths-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.booths-container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+
+.booths-container::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
 }
 
 .close-button {

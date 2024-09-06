@@ -89,24 +89,32 @@ function createScrollItems() {
     
     dropdownDiv.appendChild(dropdownTitle);
 
-    const nameListDiv = document.getElementById("nameList");
-    const nameListItems = nameListDiv.querySelectorAll('[role="listitem"]');
+    // Get the child 'nameList' and iterate through its items
+    const nameListDiv = menu.querySelector('#nameList');  // Use relative query
+    if (nameListDiv) {
+      const nameListItems = nameListDiv.querySelectorAll('[role="listitem"]');
 
-    nameListItems.forEach(item => {
-      const name = item.querySelector('.item');
-      const index = item.querySelector('.index');
-      const itemDiv = document.createElement("div");
-      itemDiv.className = "dropdown-item";
-      itemDiv.textContent = name.textContent.trim();
-      itemDiv.addEventListener("click", () => {
-        handleScrollItemClick(parseInt(index.textContent.trim())+1);
+      nameListItems.forEach(item => {
+        const name = item.querySelector('.item');
+        const index = item.querySelector('.index');
+
+        if (name && index) {
+          const itemDiv = document.createElement("div");
+          itemDiv.className = "dropdown-item";
+          itemDiv.textContent = name.textContent.trim();
+
+          itemDiv.addEventListener("click", () => {
+            handleScrollItemClick(parseInt(index.textContent.trim())); // +1 removed since index starts from 1
+          });
+
+          dropdownDiv.appendChild(itemDiv);
+        }
       });
+  }
 
-      dropdownDiv.appendChild(itemDiv);
-    });
-    const scrollContent = document.querySelector(".scroll-content");
-
-    scrollContent.appendChild(dropdownDiv);
+  // Append the dropdown menu to the scroll content
+  const scrollContent = document.querySelector(".scroll-content");
+  scrollContent.appendChild(dropdownDiv);
   });
 }
 

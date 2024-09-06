@@ -78,6 +78,39 @@ html {
   background: transparent;
 }
 
+/* Hamburger Menu Dropdown Styles */
+.dropdown-menu {
+  display: none; /* Hidden initially */
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 10px;
+  border-radius: 5px;
+  width: 200px;
+  margin-top: 10px; /* Spacing between items */
+  animation: dropdown-expand 0.3s ease-out;
+}
+
+.dropdown-item {
+  padding: 10px;
+  background-color: #f3f3f3;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Hover effect */
+.dropdown-item:hover {
+  background-color: #e0e0e0;
+  transform: translateX(5px); /* Slide in a bit on hover */
+}
+
+/* Click animation */
+.dropdown-item:active {
+  background-color: #ccc;
+  transform: scale(0.98); /* Slight shrink on click */
+}
+
 .close-button {
   position: absolute;
   top: 20px; /* Distance from the top */
@@ -139,6 +172,30 @@ html {
   100% {
     opacity: 1;
     height: 300px; /* Final height of the scroll container */
+  }
+}
+
+/* Keyframes for dropdown expand animation */
+@keyframes dropdown-expand {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Keyframes for dropdown collapse animation */
+@keyframes dropdown-collapse {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
   }
 }
 

@@ -4,7 +4,7 @@ const canvas = document.getElementById("canvas3d");
 const app = new Application(canvas);
 let isShowed = false; // Check if all ui is showed
 let infoShowed = false; // Check if info tab is showed
-const listDiv = document.getElementById("list");
+const listDiv = document.getElementById("titleList");
 const loaderContainer = document.getElementById("loader-container");
 const boothIconName = ["IconBOSCH", "IconHCLTech", "IconNetcompany", "IconSchneider",
   "Iconnab", "IconKatalon", "IconMarvell", "IconSchaeffler", "IconFaraday",
@@ -56,23 +56,52 @@ function createScrollItems() {
   // Step 1: Select the parent div using the global variable
   // const listDiv = document.getElementById(listDivId);
   // const listDiv = document.getElementById("list");
-  const listItems = listDiv.querySelectorAll('[role="listitem"]');
-  const itemsArray = [];
-  listItems.forEach(item => {
-    const boothName = item.querySelector('.program');
-    itemsArray.push(boothName.textContent.trim());
-  });
-  const scrollContent = document.querySelector(".scroll-content");
+  // const listItems = listDiv.querySelectorAll('[role="listitem"]');
+  // const itemsArray = [];
+  // listItems.forEach(item => {
+  //   const boothName = item.querySelector('.program');
+  //   itemsArray.push(boothName.textContent.trim());
+  // });
+  // const scrollContent = document.querySelector(".scroll-content");
 
-  for (let i = 0; i < itemsArray.length; i++) {
-    const item = document.createElement("div");
-    item.className = "scroll-item";
-    item.textContent = itemsArray[i];
-    item.addEventListener("click", () => {
-      handleScrollItemClick(i+1);
+  // for (let i = 0; i < itemsArray.length; i++) {
+  //   const item = document.createElement("div");
+  //   item.className = "scroll-item";
+  //   item.textContent = itemsArray[i];
+  //   item.addEventListener("click", () => {
+  //     handleScrollItemClick(i+1);
+  //   });
+  //   scrollContent.appendChild(item);
+  // }
+  const listItems = listDiv.querySelectorAll('[role="listitem"]');
+  listItems.forEach((menu) => {
+    const title = menu.querySelector('.title');
+    const dropdownDiv = document.createElement("div");
+    dropdownDiv.className = "dropdown-menu";
+
+    const dropdownTitle = document.createElement("div");
+    dropdownTitle.className = "dropdown-title";
+    dropdownTitle.textContent = title.textContent.trim();
+    dropdownDiv.appendChild(dropdownTitle);
+
+    const nameListDiv = menu.getElementById("nameList");
+    const nameListItems = nameListDiv.querySelectorAll('[role="listitem"]');
+
+    nameListItems.forEach((item) => {
+      const name = item.querySelector('.item');
+      const index = item.querySelector('.index');
+      const itemDiv = document.createElement("div");
+      itemDiv.className = "dropdown-item";
+      itemDiv.textContent = name.textContent.trim();
+      itemDiv.addEventListener("click", () => {
+        handleScrollItemClick(parseInt(index.textContent.trim())+1);
+      });
+
+      dropdownDiv.appendChild(itemDiv);
     });
-    scrollContent.appendChild(item);
-  }
+
+    scrollContainerWrapper.appendChild(dropdownDiv);
+  });
 }
 
 // Function to disable a scroll item by its index
@@ -178,6 +207,19 @@ function ShowHamburgerMenu(){
   hamburgerMenu.style.display = "flex";
 }
 
+// Function to toggle the dropdown visibility
+function toggleDropdown(dropdownDiv) {
+  if (dropdownDiv.style.display === "none" || !dropdownDiv.style.display) {
+    dropdownDiv.style.display = "flex";
+    dropdownDiv.style.animation = "dropdown-expand 0.3s ease-out forwards";
+  } else {
+    dropdownDiv.style.animation = "dropdown-collapse 0.3s ease-in-out forwards";
+    setTimeout(() => {
+      dropdownDiv.style.display = "none";
+    }, 300); // Wait for animation to finish
+  }
+}
+
 // Toggle menu visibility on hamburger click
 hamburgerMenu.addEventListener("click", async () => {
   hamburgerMenu.classList.toggle("active");
@@ -189,6 +231,14 @@ hamburgerMenu.addEventListener("click", async () => {
     await delay(600);
     scrollContainerWrapper.style.display = "none";
     
+  }
+});
+
+// Add event listener for each dropdown title
+scrollContainerWrapper.addEventListener("click", (e) => {
+  if (e.target.classList.contains("dropdown-title")) {
+    const dropdownDiv = e.target.nextElementSibling;
+    toggleDropdown(dropdownDiv);
   }
 });
 

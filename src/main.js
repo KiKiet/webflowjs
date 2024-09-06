@@ -78,10 +78,9 @@ function createScrollItems() {
   console.log(listItems);
   listItems.forEach(menu => {
     const title = menu.querySelector('.title');
-    
+    const dropdownDiv = document.createElement("div");
+    dropdownDiv.className = "dropdown-menu";
     if (title) {
-      const dropdownDiv = document.createElement("div");
-      dropdownDiv.className = "dropdown-menu";
       const dropdownTitle = document.createElement("div");
       dropdownTitle.className = "dropdown-title";
       dropdownTitle.textContent = title.textContent.trim();
@@ -218,6 +217,7 @@ async function hideInfo(){
 
 const hamburgerMenu = document.getElementById("hamburger-menu");
 const scrollContainerWrapper = document.getElementById("scroll-container-wrapper");
+const scrollContainer = document.getElementById("scroll-container");
 
 function ShowHamburgerMenu(){
   hamburgerMenu.style.display = "flex";
@@ -251,7 +251,7 @@ hamburgerMenu.addEventListener("click", async () => {
 });
 
 // Add event listener for each dropdown title
-scrollContainerWrapper.addEventListener("click", (e) => {
+scrollContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("dropdown-title")) {
     const dropdownDiv = e.target.nextElementSibling;
     toggleDropdown(dropdownDiv);

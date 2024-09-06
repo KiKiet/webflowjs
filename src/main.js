@@ -4,6 +4,7 @@ const canvas = document.getElementById("canvas3d");
 const app = new Application(canvas);
 let isShowed = false; // Check if all ui is showed
 let infoShowed = false; // Check if info tab is showed
+const contentListDiv = document.getElementById("list");
 const listDiv = document.getElementById("titleList");
 const loaderContainer = document.getElementById("loader-container");
 const boothIconName = ["IconBOSCH", "IconHCLTech", "IconNetcompany", "IconSchneider",
@@ -90,7 +91,8 @@ function createScrollItems() {
     dropdownDiv.appendChild(dropdownTitle);
 
     // Get the child 'nameList' and iterate through its items
-    const nameListDiv = menu.querySelector('#nameList');  // Use relative query
+    console.log(menu.querySelector('.fs-cmsnest_category-block'));
+    const nameListDiv = menu.querySelector('.fs-cmsnest_category-block');  // Use relative query
     if (nameListDiv) {
       const nameListItems = nameListDiv.querySelectorAll('[role="listitem"]');
 
@@ -113,8 +115,8 @@ function createScrollItems() {
   }
 
   // Append the dropdown menu to the scroll content
-  const scrollContent = document.querySelector(".scroll-content");
-  scrollContent.appendChild(dropdownDiv);
+  const scroll = document.getElementById("scroll-container")
+  scroll.appendChild(dropdownDiv);
   });
 }
 
@@ -186,7 +188,7 @@ async function hideCloseButton() {
 
 const infoTab = document.getElementById("infoTab");
 const infoTabButton = document.getElementById("TabIcon");
-const listItems = listDiv.querySelectorAll('[role="listitem"]');
+const contentListItems = contentListDiv.querySelectorAll('[role="listitem"]');
 
 function delay(milliseconds){
   return new Promise(resolve => {
@@ -195,7 +197,7 @@ function delay(milliseconds){
 }
 
 async function showInfo(index) {
-  listItems.forEach((item, idx) => {
+  contentListItems.forEach((item, idx) => {
     item.style.display = idx === index-1 ? 'block' : 'none';
   });
   if (isShowed == false){

@@ -91,8 +91,8 @@ function createScrollItems() {
     dropdownDiv.appendChild(dropdownTitle);
 
     // Get the child 'nameList' and iterate through its items
-    console.log(menu.querySelector('.fs-cmsnest_category-block'));
-    const nameListDiv = menu.querySelector('.fs-cmsnest_category-block');  // Use relative query
+    console.log(menu.querySelector('#nameList'));
+    const nameListDiv = menu.querySelector('#nameList');  // Use relative query
     if (nameListDiv) {
       const nameListItems = nameListDiv.querySelectorAll('[role="listitem"]');
 

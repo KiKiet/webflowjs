@@ -78,40 +78,44 @@ function createScrollItems() {
   console.log(listItems);
   listItems.forEach(menu => {
     const title = menu.querySelector('.title');
-    const dropdownDiv = document.createElement("div");
-    dropdownDiv.className = "dropdown-menu";
+
     if (title) {
+      const dropdownDiv = document.createElement("div");
+      dropdownDiv.className = "dropdown-menu";
       const dropdownTitle = document.createElement("div");
       dropdownTitle.className = "dropdown-title";
+      const boothsContainerDiv = document.createElement("div");
+      boothsContainerDiv.className = "booths-container";
       dropdownTitle.textContent = title.textContent.trim();
       dropdownDiv.appendChild(dropdownTitle);
+
+
+
+      // Get the child 'nameList' and iterate through its items
+      console.log(menu.querySelector('#nameList'));
+      const nameListDiv = menu.querySelector('#nameList');  // Use relative query
+      if (nameListDiv) {
+        const nameListItems = nameListDiv.querySelectorAll('[role="listitem"]');
+
+        nameListItems.forEach(item => {
+          const name = item.querySelector('.item');
+          const index = item.querySelector('.index');
+
+          if (name && index) {
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "dropdown-item";
+            itemDiv.textContent = name.textContent.trim();
+
+            itemDiv.addEventListener("click", () => {
+              handleScrollItemClick(parseInt(index.textContent.trim())); // +1 removed since index starts from 1
+            });
+
+            boothsContainerDiv.appendChild(itemDiv);
+          }
+        });
+        dropdownDiv.appendChild(boothsContainerDiv);
+      }
     }
-    
-    
-
-    // Get the child 'nameList' and iterate through its items
-    console.log(menu.querySelector('#nameList'));
-    const nameListDiv = menu.querySelector('#nameList');  // Use relative query
-    if (nameListDiv) {
-      const nameListItems = nameListDiv.querySelectorAll('[role="listitem"]');
-
-      nameListItems.forEach(item => {
-        const name = item.querySelector('.item');
-        const index = item.querySelector('.index');
-
-        if (name && index) {
-          const itemDiv = document.createElement("div");
-          itemDiv.className = "dropdown-item";
-          itemDiv.textContent = name.textContent.trim();
-
-          itemDiv.addEventListener("click", () => {
-            handleScrollItemClick(parseInt(index.textContent.trim())); // +1 removed since index starts from 1
-          });
-
-          dropdownDiv.appendChild(itemDiv);
-        }
-      });
-  }
 
   // Append the dropdown menu to the scroll content
   const scroll = document.getElementById("scroll-container")

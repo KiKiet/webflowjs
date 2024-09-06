@@ -83,7 +83,10 @@ function createScrollItems() {
 
     const dropdownTitle = document.createElement("div");
     dropdownTitle.className = "dropdown-title";
-    dropdownTitle.textContent = title.textContent.trim();
+    if (title != null){
+      dropdownTitle.textContent = title.textContent.trim();
+    }
+    
     dropdownDiv.appendChild(dropdownTitle);
 
     const nameListDiv = document.getElementById("nameList");

@@ -74,6 +74,7 @@ function createScrollItems() {
   //   scrollContent.appendChild(item);
   // }
   const listItems = listDiv.querySelectorAll('[role="listitem"]');
+  console.log(listItems);
   listItems.forEach(menu => {
     const title = menu.querySelector('.title');
     const dropdownDiv = document.createElement("div");

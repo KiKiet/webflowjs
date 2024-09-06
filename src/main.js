@@ -76,6 +76,7 @@ function createScrollItems() {
   const listItems = listDiv.querySelectorAll('[role="listitem"]');
   console.log(listItems);
   listItems.forEach(menu => {
+    console.log(menu.querySelector('.title'));
     const title = menu.querySelector('.title');
     const dropdownDiv = document.createElement("div");
     dropdownDiv.className = "dropdown-menu";

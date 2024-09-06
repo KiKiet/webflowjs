@@ -84,7 +84,7 @@ function createScrollItems() {
     dropdownTitle.textContent = title.textContent.trim();
     dropdownDiv.appendChild(dropdownTitle);
 
-    const nameListDiv = menu.getElementById("nameList");
+    const nameListDiv = document.getElementById("nameList");
     const nameListItems = nameListDiv.querySelectorAll('[role="listitem"]');
 
     nameListItems.forEach((item) => {
@@ -106,19 +106,19 @@ function createScrollItems() {
 
 // Function to disable a scroll item by its index
 function disableScrollItemByIndex(index) {
-  const scrollItems = document.querySelectorAll(".scroll-item");
+  const scrollItems = document.querySelectorAll(".dropdown-item");
   scrollItems[index-1].classList.add("disabled");
 }
 
 // Function to disable a scroll item by its index
 function enableScrollItemByIndex(index) {
-  const scrollItems = document.querySelectorAll(".scroll-item");
+  const scrollItems = document.querySelectorAll(".dropdown-item");
   scrollItems[index-1].classList.remove("disabled");
 }
 
 // Function to enable all scroll items
 function enableAllScrollItems() {
-  const scrollItems = document.querySelectorAll(".scroll-item");
+  const scrollItems = document.querySelectorAll(".dropdown-item");
   scrollItems.forEach((item) => {
     item.classList.remove("disabled");
   });

@@ -77,18 +77,18 @@ function createScrollItems() {
   const listItems = listDiv.querySelectorAll('[role="listitem"]');
   console.log(listItems);
   listItems.forEach(menu => {
-    console.log(menu.querySelector('.title'));
     const title = menu.querySelector('.title');
-    const dropdownDiv = document.createElement("div");
-    dropdownDiv.className = "dropdown-menu";
-
-    const dropdownTitle = document.createElement("div");
-    dropdownTitle.className = "dropdown-title";
-    if (title != null){
+    
+    if (title) {
+      const dropdownDiv = document.createElement("div");
+      dropdownDiv.className = "dropdown-menu";
+      const dropdownTitle = document.createElement("div");
+      dropdownTitle.className = "dropdown-title";
       dropdownTitle.textContent = title.textContent.trim();
+      dropdownDiv.appendChild(dropdownTitle);
     }
     
-    dropdownDiv.appendChild(dropdownTitle);
+    
 
     // Get the child 'nameList' and iterate through its items
     console.log(menu.querySelector('#nameList'));

@@ -74,7 +74,7 @@ function createScrollItems() {
   //   scrollContent.appendChild(item);
   // }
   const listItems = listDiv.querySelectorAll('[role="listitem"]');
-  listItems.forEach((menu) => {
+  listItems.forEach(menu => {
     const title = menu.querySelector('.title');
     const dropdownDiv = document.createElement("div");
     dropdownDiv.className = "dropdown-menu";
@@ -87,7 +87,7 @@ function createScrollItems() {
     const nameListDiv = document.getElementById("nameList");
     const nameListItems = nameListDiv.querySelectorAll('[role="listitem"]');
 
-    nameListItems.forEach((item) => {
+    nameListItems.forEach(item => {
       const name = item.querySelector('.item');
       const index = item.querySelector('.index');
       const itemDiv = document.createElement("div");

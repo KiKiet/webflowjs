@@ -104,8 +104,9 @@ function createScrollItems() {
 
       dropdownDiv.appendChild(itemDiv);
     });
+    const scrollContent = document.querySelector(".scroll-content");
 
-    scrollContainerWrapper.appendChild(dropdownDiv);
+    scrollContent.appendChild(dropdownDiv);
   });
 }
 

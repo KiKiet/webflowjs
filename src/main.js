@@ -76,11 +76,12 @@ function createScrollItems() {
   // }
   const listItems = listDiv.querySelectorAll('[role="listitem"]');
   console.log(listItems);
+  let dropdownDiv;
   listItems.forEach(menu => {
     const title = menu.querySelector('.title');
 
     if (title) {
-      const dropdownDiv = document.createElement("div");
+      dropdownDiv = document.createElement("div");
       dropdownDiv.className = "dropdown-menu";
       const dropdownTitle = document.createElement("div");
       dropdownTitle.className = "dropdown-title";

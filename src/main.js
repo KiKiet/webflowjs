@@ -231,7 +231,7 @@ function ShowHamburgerMenu(){
 // Function to toggle the dropdown visibility
 function toggleDropdown(dropdownDiv) {
   if (dropdownDiv.style.display === "none" || !dropdownDiv.style.display) {
-    dropdownDiv.style.display = "flex";
+    dropdownDiv.style.display = "block";
     dropdownDiv.style.animation = "dropdown-expand 0.3s ease-out forwards";
   } else {
     dropdownDiv.style.animation = "dropdown-collapse 0.3s ease-in-out forwards";
@@ -245,7 +245,7 @@ function toggleDropdown(dropdownDiv) {
 hamburgerMenu.addEventListener("click", async () => {
   hamburgerMenu.classList.toggle("active");
   if (hamburgerMenu.classList.contains("active")) {
-    scrollContainerWrapper.style.display = "flex";
+    scrollContainerWrapper.style.display = "block";
     scrollContainerWrapper.style.animation = "expandDown 0.5s ease-out forwards";
   } else {
     scrollContainerWrapper.style.animation = "fadeOutUp 0.5s ease-out forwards";

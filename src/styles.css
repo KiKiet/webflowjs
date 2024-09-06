@@ -80,7 +80,7 @@ html {
 
 /* Hamburger Menu Dropdown Styles */
 .dropdown-menu {
-  display: flex; /* Hidden initially */
+  display: block;
   flex-direction: column;
   background-color: rgba(255, 255, 255, 0.95);
   padding: 10px;
@@ -109,6 +109,7 @@ html {
 
 /* Style for the container holding booth items */
 .booths-container {
+  display: none;
   background-color: #fff;
   padding: 10px;
   border: 1px solid #ddd;

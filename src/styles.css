@@ -83,9 +83,9 @@ html {
   display: block;
   flex-direction: column;
   background-color: rgba(255, 255, 255, 0.95);
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
-  width: 200px;
+  width: 90%;
   margin-top: 5px; /* Spacing between items */
   animation: dropdown-expand 0.3s ease-out;
 }

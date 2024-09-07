@@ -86,15 +86,15 @@ html {
   padding: 10px;
   border-radius: 5px;
   width: 200px;
-  margin-top: 10px; /* Spacing between items */
+  margin-top: 5px; /* Spacing between items */
   animation: dropdown-expand 0.3s ease-out;
 }
 
 /* Style for the dropdown title */
 .dropdown-title {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
-  padding: 10px;
+  padding: 5px;
   background-color: #f5f5f5;
   border-bottom: 1px solid #ddd;
   border-radius: 5px 5px 0 0;
@@ -110,12 +110,12 @@ html {
 /* Style for the container holding booth items */
 .booths-container {
   display: none;
-  background-color: #fff;
+  background-color: #cecece;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 0 0 5px 5px;
-  max-height: 300px; /* Limit height, scroll if too long */
-  overflow-y: auto; /* Enable scrolling if content exceeds max height */
+  /*max-height: 300px; /* Limit height, scroll if too long */
+  /*overflow-y: auto; /* Enable scrolling if content exceeds max height */
 }
 
 .dropdown-item {

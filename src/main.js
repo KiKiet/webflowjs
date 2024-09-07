@@ -245,7 +245,7 @@ function toggleDropdown(dropdownDiv) {
 hamburgerMenu.addEventListener("click", async () => {
   hamburgerMenu.classList.toggle("active");
   if (hamburgerMenu.classList.contains("active")) {
-    scrollContainerWrapper.style.display = "block";
+    scrollContainerWrapper.style.display = "flex";
     scrollContainerWrapper.style.animation = "expandDown 0.5s ease-out forwards";
   } else {
     scrollContainerWrapper.style.animation = "fadeOutUp 0.5s ease-out forwards";

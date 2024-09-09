@@ -126,7 +126,7 @@ function createScrollItems() {
 
 // Function to disable a scroll item by its index
 function disableScrollItemByIndex(index) {
-  if (index > boothIconName.length()){
+  if (index > boothIconName.length){
     index = 1;
   }
   const scrollItems = document.querySelectorAll(".dropdown-item");
@@ -136,7 +136,7 @@ function disableScrollItemByIndex(index) {
 
 // Function to disable a scroll item by its index
 function enableScrollItemByIndex(index) {
-  if (index > boothIconName.length()){
+  if (index > boothIconName.length){
     index = 1;
   }
   const scrollItems = document.querySelectorAll(".dropdown-item");

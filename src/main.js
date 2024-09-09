@@ -164,21 +164,12 @@ function handleScrollItemClick(index) {
   console.log(`Scroll item ${index} clicked!`);
   app.setVariable("ClickFromScrollbar", true);
   enableAllScrollItems();
-  // disableScrollItemByIndex(index);
+  disableScrollItemByIndex(index);
   if (isShowed){
     switchTabTriggerForButtons.click();
   }
   if (app.getVariable("State") != index) {
     app.emitEvent("mouseUp", boothIconName[index-1]);
-  }
-}
-
-// Function to show the scroll bar
-function showScrollBar() {
-  const scrollContainer = document.getElementById("scroll-container-wrapper");
-  if (scrollContainer) {
-    scrollContainer.style.display = "flex";
-    scrollContainer.style.animation = "scrollBar-easeInFromTop 0.5s ease-out";
   }
 }
 

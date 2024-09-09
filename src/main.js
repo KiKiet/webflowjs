@@ -129,7 +129,7 @@ function disableScrollItemByIndex(index) {
   if (index > boothIconName.length){
     index = 1;
   }
-  if (index < 0){
+  if (index < 1){
     index = 43;
   }
   const scrollItems = document.querySelectorAll(".dropdown-item");
@@ -142,12 +142,13 @@ function enableScrollItemByIndex(index) {
   if (index > boothIconName.length){
     index = 1;
   }
-  if (index < 0){
+  if (index < 1){
     index = 43;
   }
   const scrollItems = document.querySelectorAll(".dropdown-item");
   if (scrollItems[index-1].classList.contains("active")){
     scrollItems[index-1].classList.toggle("active");
+    scrollItems[index-1].style.pointerEvents = "auto";
   }
 }
 
@@ -157,6 +158,7 @@ function enableAllScrollItems() {
   scrollItems.forEach((item) => {
     if (item.classList.contains("active")){
       item.classList.toggle("active");
+      item.style.pointerEvents = "auto";
     }
   });
 }

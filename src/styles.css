@@ -136,7 +136,6 @@ html {
 /* Click animation */
 .dropdown-item:active {
   background-color: #ccc;
-  pointer-events: none;
   transform: scale(0.98); /* Slight shrink on click */
 }
 

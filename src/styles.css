@@ -141,10 +141,15 @@ html {
 
 /* Style for disabled dropdown items */
 .dropdown-item.disabled {
-  background-color: #ccc;
-  transform: scale(0.98); /* Slight shrink on click */
-  /*cursor: not-allowed;  Change the cursor to indicate non-clickable */
-  pointer-events: none; /* Prevent any interaction */
+  background-color: #f2f2f2; /* Light gray to indicate it's disabled */
+  color: #b0b0b0; /* Faded text color */
+  border: 1px solid #ddd; /* Softer border to match the disabled state */
+  box-shadow: none; /* Remove any shadow for disabled state */
+  cursor: default; /* Neutral cursor instead of 'not-allowed' */
+  pointer-events: none; /* Disable interaction */
+  transform: none; /* Prevent any movement or scale effects */
+  opacity: 0.7; /* Slightly dim the item to indicate it's inactive */
+  transition: background-color 0.3s, opacity 0.3s ease; /* Smooth transition for visual changes */
 }
 
 /* Additional style for booths container when scrolling */

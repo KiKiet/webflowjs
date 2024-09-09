@@ -127,27 +127,27 @@ function createScrollItems() {
 // Function to disable a scroll item by its index
 function disableScrollItemByIndex(index) {
   if (index > boothIconName.length){
-    index = 0;
+    index = 1;
   }
   if (index < 1){
-    index = boothIconName.length;
+    index = 43;
   }
   const scrollItems = document.querySelectorAll(".dropdown-item");
-  scrollItems[index].classList.add("disabled");
-  scrollItems[index].style.pointerEvents = "none"; // Disable click/touch
+  scrollItems[index-1].classList.add("disabled");
+  scrollItems[index-1].style.pointerEvents = "none"; // Disable click/touch
 }
 
 // Function to disable a scroll item by its index
 function enableScrollItemByIndex(index) {
   if (index > boothIconName.length){
-    index = 0;
+    index = 1;
   }
   if (index < 1){
-    index = boothIconName.length;
+    index = 43;
   }
   const scrollItems = document.querySelectorAll(".dropdown-item");
-  scrollItems[index].classList.remove("disabled");
-  scrollItems[index].style.pointerEvents = "auto"; // Disable click/touch
+  scrollItems[index-1].classList.remove("disabled");
+  scrollItems[index-1].style.pointerEvents = "auto"; // Disable click/touch
 }
 
 // Function to enable all scroll items

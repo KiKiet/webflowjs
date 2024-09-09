@@ -127,20 +127,22 @@ function createScrollItems() {
 // Function to disable a scroll item by its index
 function disableScrollItemByIndex(index) {
   const scrollItems = document.querySelectorAll(".dropdown-item");
-  scrollItems[index-1].classList.add("disabled");
+  scrollItems[index-1].style.pointerEvents = "none";
 }
 
 // Function to disable a scroll item by its index
 function enableScrollItemByIndex(index) {
   const scrollItems = document.querySelectorAll(".dropdown-item");
-  scrollItems[index-1].classList.remove("disabled");
+  scrollItems[index-1].classList.remove("active");
+  scrollItems[index-1].style.pointerEvents = "auto";
 }
 
 // Function to enable all scroll items
 function enableAllScrollItems() {
   const scrollItems = document.querySelectorAll(".dropdown-item");
   scrollItems.forEach((item) => {
-    item.classList.remove("disabled");
+    item.classList.remove("active");
+    item.style.pointerEvents = "auto";
   });
 }
 

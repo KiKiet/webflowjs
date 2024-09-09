@@ -126,12 +126,19 @@ function createScrollItems() {
 
 // Function to disable a scroll item by its index
 function disableScrollItemByIndex(index) {
+  if (index > boothIconName.length()){
+    index = 1;
+  }
   const scrollItems = document.querySelectorAll(".dropdown-item");
+  scrollItems[index-1].classList.add("active");
   scrollItems[index-1].style.pointerEvents = "none";
 }
 
 // Function to disable a scroll item by its index
 function enableScrollItemByIndex(index) {
+  if (index > boothIconName.length()){
+    index = 1;
+  }
   const scrollItems = document.querySelectorAll(".dropdown-item");
   scrollItems[index-1].classList.remove("active");
   scrollItems[index-1].style.pointerEvents = "auto";

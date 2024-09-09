@@ -139,6 +139,14 @@ html {
   transform: scale(0.98); /* Slight shrink on click */
 }
 
+/* Style for disabled dropdown items */
+.dropdown-item.disabled {
+  background-color: #ccc;
+  transform: scale(0.98); /* Slight shrink on click */
+  cursor: not-allowed; /* Change the cursor to indicate non-clickable */
+  pointer-events: none; /* Prevent any interaction */
+}
+
 /* Additional style for booths container when scrolling */
 .booths-container::-webkit-scrollbar {
   width: 8px;

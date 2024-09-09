@@ -127,39 +127,35 @@ function createScrollItems() {
 // Function to disable a scroll item by its index
 function disableScrollItemByIndex(index) {
   if (index > boothIconName.length){
-    index = 1;
+    index = 0;
   }
   if (index < 1){
-    index = 43;
+    index = boothIconName.length;
   }
   const scrollItems = document.querySelectorAll(".dropdown-item");
-  scrollItems[index-1].classList.toggle("active");
-  scrollItems[index-1].style.pointerEvents = "none";
+  scrollItems[index].classList.add("disabled");
+  scrollItems[index].style.pointerEvents = "none"; // Disable click/touch
 }
 
 // Function to disable a scroll item by its index
 function enableScrollItemByIndex(index) {
   if (index > boothIconName.length){
-    index = 1;
+    index = 0;
   }
   if (index < 1){
-    index = 43;
+    index = boothIconName.length;
   }
   const scrollItems = document.querySelectorAll(".dropdown-item");
-  if (scrollItems[index-1].classList.contains("active")){
-    scrollItems[index-1].classList.toggle("active");
-    scrollItems[index-1].style.pointerEvents = "auto";
-  }
+  scrollItems[index].classList.remove("disabled");
+  scrollItems[index].style.pointerEvents = "auto"; // Disable click/touch
 }
 
 // Function to enable all scroll items
 function enableAllScrollItems() {
   const scrollItems = document.querySelectorAll(".dropdown-item");
   scrollItems.forEach((item) => {
-    if (item.classList.contains("active")){
-      item.classList.toggle("active");
-      item.style.pointerEvents = "auto";
-    }
+    item.classList.remove("disabled");
+    item.style.pointerEvents = "auto";
   });
 }
 

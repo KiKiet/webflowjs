@@ -164,12 +164,13 @@ function handleScrollItemClick(index) {
   console.log(`Scroll item ${index} clicked!`);
   app.setVariable("ClickFromScrollbar", true);
   enableAllScrollItems();
-  disableScrollItemByIndex(index);
+  
   if (isShowed){
     switchTabTriggerForButtons.click();
   }
   if (app.getVariable("State") != index) {
     app.emitEvent("mouseUp", boothIconName[index-1]);
+    disableScrollItemByIndex(index);
   }
 }
 
